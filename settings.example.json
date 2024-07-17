@@ -1,0 +1,12 @@
+{
+  "TWITTER_API_KEY": "your_twitter_api_key_here",
+  "TWITTER_API_SECRET": "your_twitter_api_secret_here",
+  "TWITTER_ACCESS_TOKEN": "your_twitter_access_token_here",
+  "TWITTER_ACCESS_TOKEN_SECRET": "your_twitter_access_token_secret_here",
+  "LINKEDIN_CLIENT_ID": "your_linkedin_client_id_here",
+  "LINKEDIN_CLIENT_SECRET": "your_linkedin_client_secret_here",
+  "FACEBOOK_ACCESS_TOKEN": "your_facebook_access_token_here",
+  "OPENAI_API_KEY": "your_openai_api_key_here",
+  "SAMPLE_SIZE_AB_TEST": 0.2,
+  "SIGNIFICANCE_LEVEL": 0.05
+}
