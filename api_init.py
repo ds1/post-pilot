@@ -15,14 +15,32 @@ def load_settings():
 
 settings = load_settings()
 
+#OAuth1.0a
+# def init_twitter():
+#     auth = tweepy.OAuthHandler(
+#         settings.get('TWITTER_API_KEY', ''),
+#         settings.get('TWITTER_API_SECRET', ''),
+#         callback='http://127.0.0.1:8000/callback'
+#     )
+#     auth.set_access_token(
+#         settings.get('TWITTER_ACCESS_TOKEN', ''),
+#         settings.get('TWITTER_ACCESS_TOKEN_SECRET', '')
+#     )
+#     return tweepy.API(auth)
+
+#OAuth 2
 def init_twitter():
-    client = tweepy.Client(
-        consumer_key=settings.get('TWITTER_API_KEY', ''),
-        consumer_secret=settings.get('TWITTER_API_SECRET', ''),
-        access_token=settings.get('TWITTER_ACCESS_TOKEN', ''),
-        access_token_secret=settings.get('TWITTER_ACCESS_TOKEN_SECRET', '')
-    )
-    return client
+    try:
+        client = tweepy.Client(
+            consumer_key=settings.get('TWITTER_API_KEY', ''),
+            consumer_secret=settings.get('TWITTER_API_SECRET', ''),
+            access_token=settings.get('TWITTER_ACCESS_TOKEN', ''),
+            access_token_secret=settings.get('TWITTER_ACCESS_TOKEN_SECRET', '')
+        )
+        return client
+    except Exception as e:
+        logging.error(f"Error initializing Twitter client: {str(e)}")
+        return None
 
 def init_linkedin():
     return Linkedin(

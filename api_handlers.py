@@ -5,7 +5,10 @@ from api_init import init_twitter, init_linkedin, init_facebook
 
 def post_to_twitter(content):
     try:
-        twitter_api = init_twitter()
+        twitter_api = init_twitter()  # Initialize Twitter API client for each post
+        if twitter_api is None:
+            raise Exception("Failed to initialize Twitter API client")
+        
         response = twitter_api.create_tweet(text=content)
         tweet_id = response.data['id']
         logging.info(f"Posted to Twitter: {content[:50]}...")

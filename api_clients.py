@@ -15,6 +15,8 @@ def load_settings():
 
 settings = load_settings()
 
+#Twitter OAuth 1.0a
+# https://developer.x.com/en/docs/authentication/guides/v2-authentication-mapping
 def init_twitter():
     auth = tweepy.OAuthHandler(
         settings.get('TWITTER_API_KEY', ''),
@@ -25,6 +27,18 @@ def init_twitter():
         settings.get('TWITTER_ACCESS_TOKEN_SECRET', '')
     )
     return tweepy.API(auth)
+
+
+#Twitter API OAuth v2
+# https://developer.x.com/en/docs/authentication/guides/v2-authentication-mapping
+# def init_twitter():
+#     client = tweepy.Client(
+#         consumer_key=settings.get('TWITTER_API_KEY', ''),
+#         consumer_secret=settings.get('TWITTER_API_SECRET', ''),
+#         access_token=settings.get('TWITTER_ACCESS_TOKEN', ''),
+#         access_token_secret=settings.get('TWITTER_ACCESS_TOKEN_SECRET', '')
+#     )
+#     return client
 
 def get_linkedin_api():
     try:
