@@ -1,17 +1,15 @@
-import os
 import sys
-import logging
-import traceback
-import json
+import os
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QTextEdit, 
                              QLabel, QHBoxLayout, QComboBox, QMessageBox, QTabWidget, QTableWidget, 
                              QTableWidgetItem, QLineEdit, QFormLayout, QDateEdit, QTimeEdit, QDialog,
                              QGroupBox, QScrollArea)
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QDate, QTime
-from PyQt5.QtGui import QIcon
 import pandas as pd
+import json
 from main import SchedulerThread, content_calendar, run_content_optimization
 from utils.nlp_utils import generate_ab_variant
+from api_handlers import test_twitter_post
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -19,17 +17,49 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Social Media Optimizer")
         self.setGeometry(100, 100, 1000, 800)
 
-        self.content_calendar = ContentCalendar()
+        self.content_calendar = content_calendar
 
         self.tab_widget = QTabWidget()
         self.setCentralWidget(self.tab_widget)
 
         # Main tab
         main_tab = QWidget()
-        main_layout = QVBoxLayout(main_tab)
+        main_layout = QVBoxLayout()
         
-        # ... (main tab content)
+        button_layout = QHBoxLayout()
+        self.start_button = QPushButton("Start Scheduler")
+        self.start_button.clicked.connect(self.start_scheduler)
+        button_layout.addWidget(self.start_button)
 
+        self.optimize_button = QPushButton("Run Content Optimization")
+        self.optimize_button.clicked.connect(self.run_optimization)
+        button_layout.addWidget(self.optimize_button)
+
+        self.test_twitter_button = QPushButton("Test Twitter Post")
+        self.test_twitter_button.clicked.connect(self.test_twitter)
+        button_layout.addWidget(self.test_twitter_button)
+
+        main_layout.addLayout(button_layout)
+
+        variant_layout = QHBoxLayout()
+        self.post_selector = QComboBox()
+        self.update_post_selector()
+        variant_layout.addWidget(self.post_selector)
+
+        self.generate_variant_button = QPushButton("Generate Variant")
+        self.generate_variant_button.clicked.connect(self.generate_variant)
+        variant_layout.addWidget(self.generate_variant_button)
+
+        main_layout.addLayout(variant_layout)
+
+        self.log_label = QLabel("Logs:")
+        main_layout.addWidget(self.log_label)
+
+        self.log_display = QTextEdit()
+        self.log_display.setReadOnly(True)
+        main_layout.addWidget(self.log_display)
+
+        main_tab.setLayout(main_layout)
         self.tab_widget.addTab(main_tab, "Main")
 
         # Content Calendar tab
@@ -43,6 +73,9 @@ class MainWindow(QMainWindow):
         # Settings tab
         self.settings_tab = SettingsTab()
         self.tab_widget.addTab(self.settings_tab, "Settings")
+
+        self.scheduler_thread = None
+        self.optimization_thread = None
 
     def start_scheduler(self):
         if self.scheduler_thread is None:
@@ -84,22 +117,18 @@ class MainWindow(QMainWindow):
         else:
             QMessageBox.warning(self, "Error", "No post selected")
 
+    def test_twitter(self):
+        content = "This is a test tweet from our Social Media Optimizer app!"
+        result = test_twitter_post(content)
+        QMessageBox.information(self, "Twitter Test Result", result)
+        self.update_log(result)
+
 class ContentCalendarTab(QWidget):
     post_updated = pyqtSignal()
 
     def __init__(self, content_calendar):
         super().__init__()
         self.content_calendar = content_calendar
-        self.column_mapping = {
-            "Due Date": "due_date",
-            "Platform": "platform",
-            "Content Type": "content_type",
-            "Subject": "subject",
-            "Content": "content",
-            "Time Slot": "time_slot",
-            "Engagement Score": "engagement_score",
-            "Is Variant": "is_variant"
-        }
         layout = QVBoxLayout()
         
         self.table = QTableWidget()
@@ -130,78 +159,61 @@ class ContentCalendarTab(QWidget):
         else:
             order = Qt.AscendingOrder
         
-        column_label = self.table.horizontalHeaderItem(logical_index).text()
-        column_name = self.column_mapping.get(column_label)
+        column_name = self.table.horizontalHeaderItem(logical_index).text()
+        self.content_calendar.df.sort_values(by=column_name, ascending=(order == Qt.AscendingOrder), inplace=True)
         
-        if column_name:
-            self.content_calendar.df.sort_values(by=column_name, ascending=(order == Qt.AscendingOrder), inplace=True)
-            self.update_table()
-            self.table.horizontalHeader().setSortIndicator(logical_index, order)
-        else:
-            logging.warning(f"Column '{column_label}' not found in DataFrame")    
+        self.update_table()
+        
+        self.table.horizontalHeader().setSortIndicator(logical_index, order)
 
     def update_table(self):
-        try:
-            self.table.setColumnCount(8)
-            self.table.setHorizontalHeaderLabels(["Due Date", "Platform", "Content Type", "Subject", "Content", "Time Slot", "Engagement Score", "Is Variant"])
-            self.table.setRowCount(len(self.content_calendar.df))
-            
-            for i, (_, row) in enumerate(self.content_calendar.df.iterrows()):
-                self.table.setItem(i, 0, QTableWidgetItem(str(row['due_date'])))  # Convert date to string
-                self.table.setItem(i, 1, QTableWidgetItem(row['platform']))
-                self.table.setItem(i, 2, QTableWidgetItem(row['content_type']))
-                self.table.setItem(i, 3, QTableWidgetItem(row['subject']))
-                self.table.setItem(i, 4, QTableWidgetItem(row['content']))
-                self.table.setItem(i, 5, QTableWidgetItem(row['time_slot']))
-                self.table.setItem(i, 6, QTableWidgetItem(str(row['engagement_score'])))
-                self.table.setItem(i, 7, QTableWidgetItem('Yes' if row.get('is_variant', False) else 'No'))
-            
-            self.table.resizeColumnsToContents()
-        except Exception as e:
-            logging.error(f"Error updating table: {str(e)}\n{traceback.format_exc()}")
-            QMessageBox.critical(self, "Error", f"Failed to update table: {str(e)}")
+        self.table.setColumnCount(8)
+        self.table.setHorizontalHeaderLabels(["Due Date", "Platform", "Content Type", "Subject", "Content", "Time Slot", "Engagement Score", "Is Variant"])
+        self.table.setRowCount(len(self.content_calendar.df))
+        
+        for i, (_, row) in enumerate(self.content_calendar.df.iterrows()):
+            self.table.setItem(i, 0, QTableWidgetItem(str(row['due_date'])))
+            self.table.setItem(i, 1, QTableWidgetItem(row['platform']))
+            self.table.setItem(i, 2, QTableWidgetItem(row['content_type']))
+            self.table.setItem(i, 3, QTableWidgetItem(row['subject']))
+            self.table.setItem(i, 4, QTableWidgetItem(row['content']))
+            self.table.setItem(i, 5, QTableWidgetItem(row['time_slot']))
+            self.table.setItem(i, 6, QTableWidgetItem(str(row['engagement_score'])))
+            self.table.setItem(i, 7, QTableWidgetItem('Yes' if row.get('is_variant', False) else 'No'))
+        
+        self.table.resizeColumnsToContents()
 
     def add_post(self):
-        try:
-            dialog = PostDialog(self.content_calendar)
+        dialog = PostDialog(self.content_calendar)
+        if dialog.exec_():
+            self.update_table()
+            self.post_updated.emit()
+    
+    def edit_post(self):
+        selected_items = self.table.selectedItems()
+        if selected_items:
+            row = selected_items[0].row()
+            post_index = self.content_calendar.df.index[row]
+            dialog = PostDialog(self.content_calendar, post_index)
             if dialog.exec_():
                 self.update_table()
                 self.post_updated.emit()
-        except Exception as e:
-            logging.error(f"Error adding post: {str(e)}\n{traceback.format_exc()}")
-            QMessageBox.critical(self, "Error", f"Failed to add post: {str(e)}")
-    
-    def edit_post(self):
-        try:
-            selected_items = self.table.selectedItems()
-            if selected_items:
-                row = selected_items[0].row()
-                post_index = self.content_calendar.df.index[row]
-                dialog = PostDialog(self.content_calendar, post_index)
-                if dialog.exec_():
-                    self.update_table()
-                    self.post_updated.emit()
-            else:
-                QMessageBox.warning(self, "Error", "No post selected")
-        except Exception as e:
-            logging.error(f"Error editing post: {str(e)}\n{traceback.format_exc()}")
-            QMessageBox.critical(self, "Error", f"Failed to edit post: {str(e)}")
+        else:
+            QMessageBox.warning(self, "Error", "No post selected")
     
     def delete_post(self):
-        try:
-            selected_items = self.table.selectedItems()
-            if selected_items:
-                row = selected_items[0].row()
-                post_index = self.content_calendar.df.index[row]
+        selected_items = self.table.selectedItems()
+        if selected_items:
+            row = selected_items[0].row()
+            post_index = self.content_calendar.df.index[row]
+            confirm = QMessageBox.question(self, "Confirm Deletion", "Are you sure you want to delete this post?", QMessageBox.Yes | QMessageBox.No)
+            if confirm == QMessageBox.Yes:
                 self.content_calendar.df = self.content_calendar.df.drop(post_index)
                 self.content_calendar.save()
                 self.update_table()
                 self.post_updated.emit()
-            else:
-                QMessageBox.warning(self, "Error", "No post selected")
-        except Exception as e:
-            logging.error(f"Error deleting post: {str(e)}\n{traceback.format_exc()}")
-            QMessageBox.critical(self, "Error", f"Failed to delete post: {str(e)}")
+        else:
+            QMessageBox.warning(self, "Error", "No post selected")
 
 class PostDialog(QDialog):
     def __init__(self, content_calendar, post_index=None):
@@ -211,75 +223,46 @@ class PostDialog(QDialog):
         self.setWindowTitle("Add/Edit Post")
         self.setModal(True)
         
-        try:
-            layout = QFormLayout()
-            
-            self.due_date = QDateEdit()
-            self.due_date.setCalendarPopup(True)
-            self.due_date.setDate(QDate.currentDate())
-            layout.addRow("Due Date:", self.due_date)
-            
-            self.platform = QComboBox()
-            self.platform.addItems(["Twitter", "LinkedIn", "Facebook"])
-            layout.addRow("Platform:", self.platform)
-            
-            self.content_type = QLineEdit()
-            layout.addRow("Content Type:", self.content_type)
-            
-            self.subject = QLineEdit()
-            layout.addRow("Subject:", self.subject)
-            
-            self.content = QTextEdit()
-            layout.addRow("Content:", self.content)
-            
-            self.time_slot = QTimeEdit()
-            self.time_slot.setDisplayFormat("HH:mm")  # Set display format to exclude seconds
-            self.time_slot.setTime(QTime.currentTime())
-            layout.addRow("Time Slot:", self.time_slot)
-            
-            button_box = QHBoxLayout()
-            save_button = QPushButton("Save")
-            save_button.clicked.connect(self.save_post)
-            button_box.addWidget(save_button)
-            
-            cancel_button = QPushButton("Cancel")
-            cancel_button.clicked.connect(self.reject)
-            button_box.addWidget(cancel_button)
-            
-            layout.addRow(button_box)
-            
-            self.setLayout(layout)
-            
-            if post_index is not None:
-                self.load_post_data()
-        except Exception as e:
-            logging.error(f"Error initializing PostDialog: {str(e)}\n{traceback.format_exc()}")
-            QMessageBox.critical(self, "Error", f"Failed to initialize dialog: {str(e)}")
+        layout = QFormLayout()
+        
+        self.due_date = QDateEdit()
+        self.due_date.setCalendarPopup(True)
+        self.due_date.setDate(QDate.currentDate())
+        layout.addRow("Due Date:", self.due_date)
+        
+        self.platform = QComboBox()
+        self.platform.addItems(["Twitter", "LinkedIn", "Facebook"])
+        layout.addRow("Platform:", self.platform)
+        
+        self.content_type = QLineEdit()
+        layout.addRow("Content Type:", self.content_type)
+        
+        self.subject = QLineEdit()
+        layout.addRow("Subject:", self.subject)
+        
+        self.content = QTextEdit()
+        layout.addRow("Content:", self.content)
+        
+        self.time_slot = QTimeEdit()
+        self.time_slot.setTime(QTime.currentTime())
+        layout.addRow("Time Slot:", self.time_slot)
+        
+        button_box = QHBoxLayout()
+        save_button = QPushButton("Save")
+        save_button.clicked.connect(self.save_post)
+        button_box.addWidget(save_button)
+        
+        cancel_button = QPushButton("Cancel")
+        cancel_button.clicked.connect(self.reject)
+        button_box.addWidget(cancel_button)
+        
+        layout.addRow(button_box)
+        
+        self.setLayout(layout)
+        
+        if post_index is not None:
+            self.load_post_data()
     
-    def save_post(self):
-        try:
-            post_data = {
-                'due_date': self.due_date.date().toString("yyyy-MM-dd"),
-                'platform': self.platform.currentText(),
-                'content_type': self.content_type.text(),
-                'subject': self.subject.text(),
-                'content': self.content.toPlainText(),
-                'time_slot': self.time_slot.time().toString("HH:mm"),  # Format time without seconds
-                'engagement_score': 0,
-                'is_variant': False
-            }
-            
-            logging.info(f"Attempting to save post: {post_data}")
-            
-            self.content_calendar.add_post(post_data)
-            logging.info("Post added successfully")
-            
-            self.accept()
-            logging.info("PostDialog accepted")
-        except Exception as e:
-            logging.error(f"Error saving post: {str(e)}\n{traceback.format_exc()}")
-            QMessageBox.critical(self, "Error", f"Failed to save post: {str(e)}")
-
     def load_post_data(self):
         try:
             post = self.content_calendar.df.loc[self.post_index]
@@ -290,8 +273,31 @@ class PostDialog(QDialog):
             self.content.setPlainText(post['content'])
             self.time_slot.setTime(pd.to_datetime(post['time_slot']).time())
         except Exception as e:
-            logging.error(f"Error loading post data: {str(e)}\n{traceback.format_exc()}")
-            QMessageBox.critical(self, "Error", f"Failed to load post data: {str(e)}")        
+            logging.error(f"Error loading post data: {str(e)}")
+            QMessageBox.critical(self, "Error", f"Failed to load post data: {str(e)}")
+    
+    def save_post(self):
+        try:
+            post_data = {
+                'due_date': self.due_date.date().toString("yyyy-MM-dd"),
+                'platform': self.platform.currentText(),
+                'content_type': self.content_type.text(),
+                'subject': self.subject.text(),
+                'content': self.content.toPlainText(),
+                'time_slot': self.time_slot.time().toString("HH:mm:ss"),
+                'engagement_score': 0,
+                'is_variant': False
+            }
+            
+            if self.post_index is None:
+                self.content_calendar.add_post(post_data)
+            else:
+                self.content_calendar.update_post(self.post_index, **post_data)
+            
+            self.accept()
+        except Exception as e:
+            logging.error(f"Error saving post: {str(e)}")
+            QMessageBox.critical(self, "Error", f"Failed to save post: {str(e)}")
 
 class AnalyticsTab(QWidget):
     def __init__(self, content_calendar):
@@ -437,16 +443,3 @@ class SettingsTab(QWidget):
             json.dump(settings, f)
         
         QMessageBox.information(self, "Settings Saved", "Your settings have been saved successfully.")
-
-class OptimizationThread(QThread):
-    update_signal = pyqtSignal(str)
-
-    def run(self):
-        run_content_optimization()
-        self.update_signal.emit("Content optimization completed.")
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
-    sys.exit(app.exec_())

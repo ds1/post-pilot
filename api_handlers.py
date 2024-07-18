@@ -1,6 +1,4 @@
-#import tweepy
 import logging
-import json
 from datetime import datetime
 import pandas as pd
 from api_init import init_twitter, init_linkedin, init_facebook
@@ -64,12 +62,12 @@ def update_engagement_metrics(calendar):
     # Implement this function to update engagement metrics
     pass
 
-# def test_twitter_post():
-#     content = "This is a test post from my Social Media Optimizer app!"
-#     try:
-#         tweet = twitter_api.update_status(content)
-#         print(f"Successfully posted to Twitter. Tweet ID: {tweet.id}")
-#     except Exception as e:
-#         print(f"Error posting to Twitter: {e}")
-
-# Call this function from your main.py or gui.py to test
+def test_twitter_post(content):
+    """
+    Test function to post directly to Twitter.
+    """
+    tweet_id = post_to_twitter(content)
+    if tweet_id:
+        return f"Successfully posted to Twitter. Tweet ID: {tweet_id}"
+    else:
+        return "Failed to post to Twitter. Check the logs for more information."
