@@ -1,4 +1,5 @@
 import logging
+import tweepy
 from datetime import datetime
 import pandas as pd
 from api_init import init_twitter, init_linkedin, init_facebook
@@ -63,9 +64,38 @@ def post_content(calendar, row):
     else:
         logging.info(f"Content not yet due. Scheduled for {post_datetime.strftime('%Y-%m-%d %H:%M')}")
 
+def get_tweet_engagement(tweet_id):
+    try:
+        twitter_api = init_twitter()
+        tweet = twitter_api.get_tweet(tweet_id, tweet_fields=['public_metrics'])
+        metrics = tweet.data['public_metrics']
+        return {
+            'likes': metrics['like_count'],
+            'retweets': metrics['retweet_count'],
+            'replies': metrics['reply_count'],
+            'impressions': metrics['impression_count']
+        }
+    except Exception as e:
+        logging.error(f"Error fetching tweet engagement: {str(e)}")
+        return None
+
 def update_engagement_metrics(calendar):
-    # Implement this function to update engagement metrics
-    pass
+    for index, row in calendar.df.iterrows():
+        if pd.notnull(row['post_id']) and row['platform'] == 'Twitter':
+            engagement = get_tweet_engagement(row['post_id'])
+            if engagement:
+                calendar.update_post(index, 
+                                     likes=engagement['likes'],
+                                     retweets=engagement['retweets'],
+                                     comments=engagement['replies'],
+                                     impressions=engagement['impressions'],
+                                     engagement_score=calculate_engagement_score(engagement))
+
+def calculate_engagement_score(engagement):
+    return (engagement['likes'] * 1 + 
+            engagement['retweets'] * 2 + 
+            engagement['replies'] * 3 + 
+            engagement['impressions'] * 0.1)
 
 def test_twitter_post(content):
     """

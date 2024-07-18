@@ -14,9 +14,9 @@ class ContentCalendar:
     def __init__(self, file_path='content_calendar.csv'):
         self.file_path = file_path
         self.lock = threading.Lock()
-        self.save_queue = Queue()
-        self.save_thread = threading.Thread(target=self._save_worker, daemon=True)
-        self.save_thread.start()
+        self.df = pd.DataFrame(columns=['due_date', 'platform', 'content_type', 'subject', 'content', 
+                                        'time_slot', 'post_id', 'likes', 'retweets', 'comments', 
+                                        'impressions', 'engagement_score', 'is_variant'])
         self.load()
 
     def load(self):
@@ -173,7 +173,10 @@ class ContentCalendar:
             'avg_engagement_by_content_length': self.df.groupby(pd.cut(self.df['content'].str.len(), bins=5))['engagement_score'].mean().to_dict(),
             'top_subjects': self.df.groupby('subject')['engagement_score'].mean().nlargest(5).to_dict()
         }
-
+    # def __del__(self):
+    #     # Remove any reference to save_queue
+    #     pass
+        
     def __del__(self):
         self.save_queue.put(None)  # Signal the save thread to exit
         self.save_thread.join()    # Wait for the save thread to finish

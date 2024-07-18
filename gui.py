@@ -1,16 +1,19 @@
 import sys
 import os
 import logging
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QTextEdit, 
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QTabWidget, QPushButton, QVBoxLayout, QWidget, QTextEdit, 
                              QLabel, QHBoxLayout, QComboBox, QMessageBox, QTabWidget, QTableWidget, 
                              QTableWidgetItem, QLineEdit, QFormLayout, QDateEdit, QTimeEdit, QDialog,
                              QGroupBox, QScrollArea)
-from PyQt5.QtCore import Qt, QThread, pyqtSignal, QDate, QTime
+from PyQt5.QtCore import Qt, QThread, pyqtSignal, QDate, QTime, QTimer
 import pandas as pd
 import json
 from main import SchedulerThread, content_calendar, run_content_optimization
 from utils.nlp_utils import generate_ab_variant
-from api_handlers import test_twitter_post
+from api_handlers import test_twitter_post, update_engagement_metrics
+from .content_calendar_tab import ContentCalendarTab
+from .analytics_tab import AnalyticsTab
+from .settings_tab import SettingsTab
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -78,6 +81,11 @@ class MainWindow(QMainWindow):
         self.scheduler_thread = None
         self.optimization_thread = None
 
+        # Set up a timer to refresh engagement data every 15 minutes
+        self.engagement_timer = QTimer(self)
+        self.engagement_timer.timeout.connect(self.refresh_engagement)
+        self.engagement_timer.start(900000)  # 15 minutes in milliseconds
+
     def start_scheduler(self):
         if self.scheduler_thread is None:
             self.scheduler_thread = SchedulerThread()
@@ -123,6 +131,18 @@ class MainWindow(QMainWindow):
         result = test_twitter_post(content)
         QMessageBox.information(self, "Twitter Test Result", result)
         self.update_log(result)
+
+    def refresh_engagement(self):
+        update_engagement_metrics(self.content_calendar)
+        self.analytics_tab.refresh_analytics()
+        self.update_log("Engagement metrics refreshed")
+
+class OptimizationThread(QThread):
+    update_signal = pyqtSignal(str)
+
+    def run(self):
+        run_content_optimization()
+        self.update_signal.emit("Content optimization completed.")
 
 class ContentCalendarTab(QWidget):
     post_updated = pyqtSignal()
@@ -323,22 +343,31 @@ class AnalyticsTab(QWidget):
         # Overall engagement statistics
         analytics_text += "Overall Engagement:\n"
         analytics_text += f"Average Engagement Score: {self.content_calendar.df['engagement_score'].mean():.2f}\n"
-        analytics_text += f"Highest Engagement Score: {self.content_calendar.df['engagement_score'].max():.2f}\n"
-        analytics_text += f"Lowest Engagement Score: {self.content_calendar.df['engagement_score'].min():.2f}\n\n"
+        analytics_text += f"Total Likes: {self.content_calendar.df['likes'].sum()}\n"
+        analytics_text += f"Total Retweets: {self.content_calendar.df['retweets'].sum()}\n"
+        analytics_text += f"Total Comments: {self.content_calendar.df['comments'].sum()}\n"
+        analytics_text += f"Total Impressions: {self.content_calendar.df['impressions'].sum()}\n\n"
         
         # Engagement by platform
         analytics_text += "Engagement by Platform:\n"
-        platform_engagement = self.content_calendar.df.groupby('platform')['engagement_score'].mean()
-        for platform, score in platform_engagement.items():
-            analytics_text += f"{platform}: {score:.2f}\n"
-        analytics_text += "\n"
+        platform_engagement = self.content_calendar.df.groupby('platform').agg({
+            'engagement_score': 'mean',
+            'likes': 'sum',
+            'retweets': 'sum',
+            'comments': 'sum',
+            'impressions': 'sum'
+        })
+        analytics_text += platform_engagement.to_string()
+        analytics_text += "\n\n"
         
         # Top performing posts
         analytics_text += "Top 5 Performing Posts:\n"
         top_posts = self.content_calendar.df.nlargest(5, 'engagement_score')
         for _, post in top_posts.iterrows():
-            analytics_text += f"- {post['platform']} ({post['due_date']}): {post['content'][:50]}... (Score: {post['engagement_score']:.2f})\n"
-        analytics_text += "\n"
+            analytics_text += f"- {post['platform']} ({post['due_date']}): {post['content'][:50]}...\n"
+            analytics_text += f"  Score: {post['engagement_score']:.2f}, Likes: {post['likes']}, "
+            analytics_text += f"Retweets: {post['retweets']}, Comments: {post['comments']}, "
+            analytics_text += f"Impressions: {post['impressions']}\n"
         
         self.analytics_text.setPlainText(analytics_text)
 
