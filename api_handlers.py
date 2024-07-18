@@ -45,6 +45,8 @@ def post_content(calendar, row):
     now = datetime.now()
     post_datetime = datetime.combine(pd.to_datetime(row['due_date']).date(), pd.to_datetime(row['time_slot']).time())
     
+    logging.info(f"Attempting to post content scheduled for {post_datetime}")
+    
     if post_datetime <= now:
         if platform == "Twitter":
             post_id = post_to_twitter(content)
@@ -55,11 +57,11 @@ def post_content(calendar, row):
         
         if post_id:
             calendar.update_post(row.name, post_id=post_id, posted_at=now.strftime("%Y-%m-%d %H:%M"))
-            logging.info(f"Posted content to {platform} at {now.strftime('%Y-%m-%d %H:%M')}")
+            logging.info(f"Successfully posted content to {platform} at {now.strftime('%Y-%m-%d %H:%M')}")
         else:
             logging.error(f"Failed to post content to {platform} at {now.strftime('%Y-%m-%d %H:%M')}")
     else:
-        logging.info(f"Scheduled post for {platform} at {post_datetime.strftime('%Y-%m-%d %H:%M')}")
+        logging.info(f"Content not yet due. Scheduled for {post_datetime.strftime('%Y-%m-%d %H:%M')}")
 
 def update_engagement_metrics(calendar):
     # Implement this function to update engagement metrics

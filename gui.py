@@ -1,5 +1,6 @@
 import sys
 import os
+import logging
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QTextEdit, 
                              QLabel, QHBoxLayout, QComboBox, QMessageBox, QTabWidget, QTableWidget, 
                              QTableWidgetItem, QLineEdit, QFormLayout, QDateEdit, QTimeEdit, QDialog,
@@ -284,7 +285,7 @@ class PostDialog(QDialog):
                 'content_type': self.content_type.text(),
                 'subject': self.subject.text(),
                 'content': self.content.toPlainText(),
-                'time_slot': self.time_slot.time().toString("HH:mm:ss"),
+                'time_slot': self.time_slot.time().toString("HH:mm"),  # Changed from "HH:mm:ss" to "HH:mm"
                 'engagement_score': 0,
                 'is_variant': False
             }

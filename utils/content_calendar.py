@@ -71,8 +71,12 @@ class ContentCalendar:
             logging.info(f"Adding new post: {post_data}")
             # Ensure due_date is a date object
             post_data['due_date'] = datetime.strptime(post_data['due_date'], "%Y-%m-%d").date()
-            # Ensure time_slot is in HH:mm format
-            post_data['time_slot'] = datetime.strptime(post_data['time_slot'], "%H:%M").strftime("%H:%M")
+            # Handle time_slot with or without seconds
+            try:
+                post_data['time_slot'] = datetime.strptime(post_data['time_slot'], "%H:%M:%S").strftime("%H:%M")
+            except ValueError:
+                post_data['time_slot'] = datetime.strptime(post_data['time_slot'], "%H:%M").strftime("%H:%M")
+            
             with self.lock:
                 new_row = pd.DataFrame([post_data])
                 self.df = pd.concat([self.df, new_row], ignore_index=True)
@@ -80,7 +84,7 @@ class ContentCalendar:
             self.save()
             logging.info("Post added and save initiated")
         except Exception as e:
-            logging.error(f"Error adding post: {str(e)}\n{traceback.format_exc()}")
+            logging.error(f"Error adding post: {str(e)}")
             raise
 
     def update_post(self, index, **kwargs):
