@@ -1,7 +1,6 @@
 import sys
 import os
-import logging
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QTabWidget, QPushButton, QVBoxLayout, QWidget, QTextEdit, 
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QTextEdit, 
                              QLabel, QHBoxLayout, QComboBox, QMessageBox, QTabWidget, QTableWidget, 
                              QTableWidgetItem, QLineEdit, QFormLayout, QDateEdit, QTimeEdit, QDialog,
                              QGroupBox, QScrollArea)
@@ -11,9 +10,6 @@ import json
 from main import SchedulerThread, content_calendar, run_content_optimization
 from utils.nlp_utils import generate_ab_variant
 from api_handlers import test_twitter_post, update_engagement_metrics
-from .content_calendar_tab import ContentCalendarTab
-from .analytics_tab import AnalyticsTab
-from .settings_tab import SettingsTab
 
 class MainWindow(QMainWindow):
     def __init__(self):

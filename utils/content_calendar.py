@@ -173,10 +173,12 @@ class ContentCalendar:
             'avg_engagement_by_content_length': self.df.groupby(pd.cut(self.df['content'].str.len(), bins=5))['engagement_score'].mean().to_dict(),
             'top_subjects': self.df.groupby('subject')['engagement_score'].mean().nlargest(5).to_dict()
         }
+
     # def __del__(self):
-    #     # Remove any reference to save_queue
-    #     pass
-        
+    #     self.save_queue.put(None)  # Signal the save thread to exit
+    #     self.save_thread.join()    # Wait for the save thread to finish
+
     def __del__(self):
-        self.save_queue.put(None)  # Signal the save thread to exit
-        self.save_thread.join()    # Wait for the save thread to finish
+        # Remove any reference to save_queue
+        pass
+

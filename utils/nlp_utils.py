@@ -121,6 +121,8 @@ def generate_ab_variant(content, insight):
     
     return generate_content(prompt, max_tokens=200)
 
+    pass
+
 def summarize_text(text, max_length=100):
     """
     Summarize the given text to a specified maximum length.

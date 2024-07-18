@@ -32,6 +32,7 @@ def run_content_optimization():
     if feature_importance is not None:
         logging.info("Top 5 important features for engagement:")
         logging.info(feature_importance.head().to_string(index=False))
+    pass
 
 def schedule_posts():
     schedule.clear()  # Clear existing schedule

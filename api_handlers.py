@@ -90,6 +90,7 @@ def update_engagement_metrics(calendar):
                                      comments=engagement['replies'],
                                      impressions=engagement['impressions'],
                                      engagement_score=calculate_engagement_score(engagement))
+    pass
 
 def calculate_engagement_score(engagement):
     return (engagement['likes'] * 1 + 
