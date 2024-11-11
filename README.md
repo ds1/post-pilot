@@ -1,5 +1,5 @@
 # post-pilot
-Social media optimizer py project
+AI-powered, automated social media post scheduler and optimizer software
 
 ## Setup
 
