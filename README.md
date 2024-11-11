@@ -1,5 +1,7 @@
 # post-pilot
-AI-powered, automated social media post scheduler and optimizer software
+AI-powered, automated social media post writer, optimizer, and scheduler software.
+
+The software continuously learns how to generate the best social media content to post. It uses machine learning to identify what content is most effective per audience and channel, then rewrites, optimizes, and schedules future posts accordingly.
 
 ## Setup
 
