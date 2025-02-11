@@ -9,7 +9,6 @@ import shutil
 from queue import Queue
 from datetime import datetime
 
-
 class ContentCalendar:
     def __init__(self, file_path='content_calendar.csv'):
         self.file_path = file_path
@@ -17,21 +16,59 @@ class ContentCalendar:
         self.save_queue = Queue()
         self.save_thread = threading.Thread(target=self._save_worker, daemon=True)
         self.save_thread.start()
+        self.df = pd.DataFrame(columns=['due_date', 'platform', 'content_type', 'subject', 'content', 
+                                      'time_slot', 'engagement_score', 'is_variant'])
         self.load()
 
     def load(self):
         try:
             if os.path.exists(self.file_path):
+                # Read the CSV file
                 self.df = pd.read_csv(self.file_path)
-                # Convert 'due_date' to datetime and then to date
-                self.df['due_date'] = pd.to_datetime(self.df['due_date']).dt.date
-                # Ensure 'time_slot' is in HH:mm format
-                self.df['time_slot'] = pd.to_datetime(self.df['time_slot']).dt.strftime('%H:%M')
+                
+                # Convert due_date using mixed format
+                self.df['due_date'] = pd.to_datetime(
+                    self.df['due_date'],
+                    format='mixed',
+                    dayfirst=False
+                ).dt.date
+                
+                # Handle time_slot conversion
+                if 'time_slot' in self.df.columns:
+                    def convert_time(time_str):
+                        if pd.isna(time_str):
+                            return '00:00'
+                        try:
+                            # First try HH:MM format
+                            return pd.to_datetime(time_str, format='%H:%M').strftime('%H:%M')
+                        except:
+                            try:
+                                # Then try HH:MM:SS format
+                                return pd.to_datetime(time_str, format='%H:%M:%S').strftime('%H:%M')
+                            except:
+                                try:
+                                    # Finally try full datetime format and extract time
+                                    return pd.to_datetime(time_str).strftime('%H:%M')
+                                except:
+                                    return '00:00'  # Default time if all parsing fails
+                    
+                    self.df['time_slot'] = self.df['time_slot'].apply(convert_time)
+                
+                # Ensure other numeric columns are properly typed
+                numeric_columns = ['engagement_score', 'likes', 'comments', 'shares']
+                for col in numeric_columns:
+                    if col in self.df.columns:
+                        self.df[col] = pd.to_numeric(self.df[col], errors='coerce')
+                
+                # Ensure boolean columns are properly typed
+                if 'is_variant' in self.df.columns:
+                    self.df['is_variant'] = self.df['is_variant'].astype(bool)
+                
                 logging.info(f"Loaded content calendar from {self.file_path}")
             else:
-                logging.warning(f"File {self.file_path} not found. Creating a new DataFrame.")
+                logging.warning(f"File {self.file_path} not found. Using empty DataFrame.")
                 self.df = pd.DataFrame(columns=['due_date', 'platform', 'content_type', 'subject', 'content', 
-                                                'time_slot', 'engagement_score', 'is_variant'])
+                                              'time_slot', 'engagement_score', 'is_variant'])
         except Exception as e:
             logging.error(f"Error loading content calendar: {str(e)}\n{traceback.format_exc()}")
             raise
@@ -51,15 +88,27 @@ class ContentCalendar:
             backup_file = self.file_path + '.bak'
             
             # Convert date to string format before saving
+            df = df.copy()
             df['due_date'] = df['due_date'].astype(str)
             
-            logging.info(f"Saving to temporary file: {temp_file}")
+            # Save to temporary file
             df.to_csv(temp_file, index=False)
-            logging.info("Data written to temporary file")
             
-            # ... (rest of the save process remains the same)
+            # If original file exists, create backup
+            if os.path.exists(self.file_path):
+                shutil.copy2(self.file_path, backup_file)
+            
+            # Replace original with new file
+            shutil.move(temp_file, self.file_path)
+            
+            logging.info("Content calendar saved successfully")
+            
         except Exception as e:
             logging.error(f"Error saving content calendar: {str(e)}\n{traceback.format_exc()}")
+            # Try to restore from backup if save failed
+            if os.path.exists(backup_file):
+                shutil.copy2(backup_file, self.file_path)
+                logging.info("Restored from backup file")
 
     def save(self):
         with self.lock:
@@ -69,10 +118,20 @@ class ContentCalendar:
     def add_post(self, post_data):
         try:
             logging.info(f"Adding new post: {post_data}")
-            # Ensure due_date is a date object
-            post_data['due_date'] = datetime.strptime(post_data['due_date'], "%Y-%m-%d").date()
-            # Ensure time_slot is in HH:mm format
-            post_data['time_slot'] = datetime.strptime(post_data['time_slot'], "%H:%M").strftime("%H:%M")
+            # Convert due_date string to date object if it isn't already
+            if isinstance(post_data['due_date'], str):
+                post_data['due_date'] = datetime.strptime(post_data['due_date'], "%Y-%m-%d").date()
+            
+            # Ensure time_slot is in HH:MM format
+            if 'time_slot' in post_data and isinstance(post_data['time_slot'], str):
+                try:
+                    post_data['time_slot'] = datetime.strptime(post_data['time_slot'], "%H:%M").strftime("%H:%M")
+                except ValueError:
+                    try:
+                        post_data['time_slot'] = datetime.strptime(post_data['time_slot'], "%H:%M:%S").strftime("%H:%M")
+                    except ValueError:
+                        post_data['time_slot'] = "00:00"
+            
             with self.lock:
                 new_row = pd.DataFrame([post_data])
                 self.df = pd.concat([self.df, new_row], ignore_index=True)

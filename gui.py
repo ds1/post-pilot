@@ -12,14 +12,18 @@ from PyQt5.QtGui import QIcon
 import pandas as pd
 from main import SchedulerThread, content_calendar, run_content_optimization
 from utils.nlp_utils import generate_ab_variant
+from utils.content_calendar import ContentCalendar
+from components.dashboard.dashboard_tab import DashboardTab
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Social Media Optimizer")
+        self.setWindowTitle("Post Pilot")
         self.setGeometry(100, 100, 1000, 800)
 
         self.content_calendar = ContentCalendar()
+        self.scheduler_thread = None
+        self.optimization_thread = None
 
         self.tab_widget = QTabWidget()
         self.setCentralWidget(self.tab_widget)
@@ -28,8 +32,40 @@ class MainWindow(QMainWindow):
         main_tab = QWidget()
         main_layout = QVBoxLayout(main_tab)
         
-        # ... (main tab content)
-
+        # Add controls section
+        controls_group = QGroupBox("Controls")
+        controls_layout = QHBoxLayout()
+        
+        self.start_button = QPushButton("Start Scheduler")
+        self.start_button.clicked.connect(self.start_scheduler)
+        controls_layout.addWidget(self.start_button)
+        
+        self.optimize_button = QPushButton("Run Optimization")
+        self.optimize_button.clicked.connect(self.run_optimization)
+        controls_layout.addWidget(self.optimize_button)
+        
+        controls_group.setLayout(controls_layout)
+        main_layout.addWidget(controls_group)
+        
+        # Add A/B testing section
+        ab_group = QGroupBox("A/B Testing")
+        ab_layout = QVBoxLayout()
+        
+        self.post_selector = QComboBox()
+        ab_layout.addWidget(self.post_selector)
+        
+        generate_button = QPushButton("Generate Variant")
+        generate_button.clicked.connect(self.generate_variant)
+        ab_layout.addWidget(generate_button)
+        
+        ab_group.setLayout(ab_layout)
+        main_layout.addWidget(ab_group)
+        
+        # Add log display
+        self.log_display = QTextEdit()
+        self.log_display.setReadOnly(True)
+        main_layout.addWidget(self.log_display)
+        
         self.tab_widget.addTab(main_tab, "Main")
 
         # Content Calendar tab
@@ -44,6 +80,9 @@ class MainWindow(QMainWindow):
         self.settings_tab = SettingsTab()
         self.tab_widget.addTab(self.settings_tab, "Settings")
 
+        # Update post selector
+        self.update_post_selector()
+
     def start_scheduler(self):
         if self.scheduler_thread is None:
             self.scheduler_thread = SchedulerThread()
@@ -53,12 +92,12 @@ class MainWindow(QMainWindow):
             self.start_button.setText("Scheduler Running")
 
     def run_optimization(self):
-        if self.optimization_thread is None:
-            self.optimization_thread = OptimizationThread()
-            self.optimization_thread.update_signal.connect(self.update_log)
-            self.optimization_thread.start()
-            self.optimize_button.setEnabled(False)
-            self.optimize_button.setText("Optimization Running")
+        try:
+            run_content_optimization()
+            self.update_log("Content optimization completed.")
+        except Exception as e:
+            self.update_log(f"Error during optimization: {str(e)}")
+            logging.error(f"Optimization error: {str(e)}\n{traceback.format_exc()}")
 
     def update_log(self, message):
         self.log_display.append(message)

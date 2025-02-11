@@ -1,7 +1,6 @@
 import json
 import tweepy
 from linkedin_api import Linkedin
-from facebook import GraphAPI
 import openai
 import logging
 

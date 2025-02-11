@@ -1,131 +1,261 @@
-due_date,platform,content_type,subject,content,author_email,time_slot,post_id,engagement_score,likes,comments,shares,is_variant,original_post_id
-2024-07-16,Twitter,post,Twitter update,How to Optimize Domain Investing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,10:00,,,,,,False,
-2024-07-16,LinkedIn,post,LinkedIn update,The Future of Domain Investing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,12:00,,,,,,False,
+due_date,platform,content_type,subject,content,author_email,time_slot,post_id,engagement_score,likes,comments,shares,is_variant,original_post_id,impressions
+2024-07-16,Twitter,post,Twitter update,How to Optimize Domain Investing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,10:00,,,,,,False,,
+2024-07-16,LinkedIn,post,LinkedIn update,The Future of Domain Investing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,12:00,,,,,,False,,
 2024-07-16,Facebook,post,Facebook update,"🚀 Top Trends in Digital Marketing 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,10:00,,,,,,False,
-2024-07-17,Twitter,post,Twitter update,Top Trends in Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,16:00,,,,,,False,
-2024-07-17,LinkedIn,post,LinkedIn update,How to Optimize Web Development: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,11:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,10:00,,,,,,False,,
+2024-07-17,Twitter,post,Twitter update,Top Trends in Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,16:00,,,,,,False,,
+2024-07-17,LinkedIn,post,LinkedIn update,How to Optimize Web Development: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,11:00,,,,,,False,,
 2024-07-17,Facebook,post,Facebook update,"🚀 Understanding Domain Investing 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,09:00,,,,,,False,
-2024-07-18,Twitter,post,Twitter update,The Future of Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,12:00,,,,,,False,
-2024-07-18,LinkedIn,post,LinkedIn update,Tips for SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,10:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,09:00,,,,,,False,,
+2024-07-18,Twitter,post,Twitter update,The Future of Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,12:00,,,,,,False,,
+2024-07-18,LinkedIn,post,LinkedIn update,Tips for SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,10:00,,,,,,False,,
 2024-07-18,Facebook,post,Facebook update,"🚀 Top Trends in SEO 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,16:00,,,,,,False,
-2024-07-19,Twitter,post,Twitter update,How to Optimize Domain Investing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,15:00,,,,,,False,
-2024-07-19,LinkedIn,post,LinkedIn update,Top Trends in E-commerce: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,11:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,16:00,,,,,,False,,
+2024-07-19,Twitter,post,Twitter update,How to Optimize Domain Investing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,15:00,,,,,,False,,
+2024-07-19,LinkedIn,post,LinkedIn update,Top Trends in E-commerce: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,11:00,,,,,,False,,
 2024-07-19,Facebook,post,Facebook update,"🚀 How to Optimize Web Development 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,12:00,,,,,,False,
-2024-07-20,Twitter,post,Twitter update,The Future of SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,12:00,,,,,,False,
-2024-07-20,LinkedIn,post,LinkedIn update,How to Optimize Web Development: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,16:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,12:00,,,,,,False,,
+2024-07-20,Twitter,post,Twitter update,The Future of SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,12:00,,,,,,False,,
+2024-07-20,LinkedIn,post,LinkedIn update,How to Optimize Web Development: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,16:00,,,,,,False,,
 2024-07-20,Facebook,post,Facebook update,"🚀 Tips for Digital Marketing 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,12:00,,,,,,False,
-2024-07-21,Twitter,post,Twitter update,Top Trends in SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,14:00,,,,,,False,
-2024-07-21,LinkedIn,post,LinkedIn update,Tips for Domain Investing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,14:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,12:00,,,,,,False,,
+2024-07-21,Twitter,post,Twitter update,Top Trends in SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,14:00,,,,,,False,,
+2024-07-21,LinkedIn,post,LinkedIn update,Tips for Domain Investing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,14:00,,,,,,False,,
 2024-07-21,Facebook,post,Facebook update,"🚀 Top Trends in Web Development 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,09:00,,,,,,False,
-2024-07-22,Twitter,post,Twitter update,Tips for Digital Marketing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,16:00,,,,,,False,
-2024-07-22,LinkedIn,post,LinkedIn update,Tips for Web Development: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,10:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,09:00,,,,,,False,,
+2024-07-22,Twitter,post,Twitter update,Tips for Digital Marketing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,16:00,,,,,,False,,
+2024-07-22,LinkedIn,post,LinkedIn update,Tips for Web Development: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,10:00,,,,,,False,,
 2024-07-22,Facebook,post,Facebook update,"🚀 The Future of Web Development 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,10:00,,,,,,False,
-2024-07-23,Twitter,post,Twitter update,Understanding SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,11:00,,,,,,False,
-2024-07-23,LinkedIn,post,LinkedIn update,How to Optimize SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,09:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,10:00,,,,,,False,,
+2024-07-23,Twitter,post,Twitter update,Understanding SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,11:00,,,,,,False,,
+2024-07-23,LinkedIn,post,LinkedIn update,How to Optimize SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,09:00,,,,,,False,,
 2024-07-23,Facebook,post,Facebook update,"🚀 Top Trends in Digital Marketing 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,14:00,,,,,,False,
-2024-07-24,Twitter,post,Twitter update,How to Optimize SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,15:00,,,,,,False,
-2024-07-24,LinkedIn,post,LinkedIn update,The Future of SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,09:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,14:00,,,,,,False,,
+2024-07-24,Twitter,post,Twitter update,How to Optimize SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,15:00,,,,,,False,,
+2024-07-24,LinkedIn,post,LinkedIn update,The Future of SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,09:00,,,,,,False,,
 2024-07-24,Facebook,post,Facebook update,"🚀 Understanding E-commerce 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,09:00,,,,,,False,
-2024-07-25,Twitter,post,Twitter update,The Future of E-commerce. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,16:00,,,,,,False,
-2024-07-25,LinkedIn,post,LinkedIn update,How to Optimize E-commerce: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,12:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,09:00,,,,,,False,,
+2024-07-25,Twitter,post,Twitter update,The Future of E-commerce. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,16:00,,,,,,False,,
+2024-07-25,LinkedIn,post,LinkedIn update,How to Optimize E-commerce: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,12:00,,,,,,False,,
 2024-07-25,Facebook,post,Facebook update,"🚀 How to Optimize Web Development 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,16:00,,,,,,False,
-2024-07-26,Twitter,post,Twitter update,Understanding Domain Investing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,17:00,,,,,,False,
-2024-07-26,LinkedIn,post,LinkedIn update,Tips for Digital Marketing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,09:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,16:00,,,,,,False,,
+2024-07-26,Twitter,post,Twitter update,Understanding Domain Investing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,17:00,,,,,,False,,
+2024-07-26,LinkedIn,post,LinkedIn update,Tips for Digital Marketing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,09:00,,,,,,False,,
 2024-07-26,Facebook,post,Facebook update,"🚀 Understanding SEO 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,10:00,,,,,,False,
-2024-07-27,Twitter,post,Twitter update,The Future of Digital Marketing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,11:00,,,,,,False,
-2024-07-27,LinkedIn,post,LinkedIn update,Tips for Digital Marketing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,09:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,10:00,,,,,,False,,
+2024-07-27,Twitter,post,Twitter update,The Future of Digital Marketing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,11:00,,,,,,False,,
+2024-07-27,LinkedIn,post,LinkedIn update,Tips for Digital Marketing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,09:00,,,,,,False,,
 2024-07-27,Facebook,post,Facebook update,"🚀 Tips for Web Development 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,14:00,,,,,,False,
-2024-07-28,Twitter,post,Twitter update,Understanding E-commerce. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,09:00,,,,,,False,
-2024-07-28,LinkedIn,post,LinkedIn update,Tips for SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,16:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,14:00,,,,,,False,,
+2024-07-28,Twitter,post,Twitter update,Understanding E-commerce. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,09:00,,,,,,False,,
+2024-07-28,LinkedIn,post,LinkedIn update,Tips for SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,16:00,,,,,,False,,
 2024-07-28,Facebook,post,Facebook update,"🚀 The Future of SEO 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,11:00,,,,,,False,
-2024-07-29,Twitter,post,Twitter update,The Future of Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,10:00,,,,,,False,
-2024-07-29,LinkedIn,post,LinkedIn update,The Future of SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,09:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,11:00,,,,,,False,,
+2024-07-29,Twitter,post,Twitter update,The Future of Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,10:00,,,,,,False,,
+2024-07-29,LinkedIn,post,LinkedIn update,The Future of SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,09:00,,,,,,False,,
 2024-07-29,Facebook,post,Facebook update,"🚀 Top Trends in E-commerce 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,11:00,,,,,,False,
-2024-07-30,Twitter,post,Twitter update,Tips for Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,09:00,,,,,,False,
-2024-07-30,LinkedIn,post,LinkedIn update,How to Optimize Digital Marketing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,10:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,11:00,,,,,,False,,
+2024-07-30,Twitter,post,Twitter update,Tips for Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,09:00,,,,,,False,,
+2024-07-30,LinkedIn,post,LinkedIn update,How to Optimize Digital Marketing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,10:00,,,,,,False,,
 2024-07-30,Facebook,post,Facebook update,"🚀 The Future of Web Development 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,15:00,,,,,,False,
-2024-07-31,Twitter,post,Twitter update,How to Optimize Digital Marketing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,16:00,,,,,,False,
-2024-07-31,LinkedIn,post,LinkedIn update,The Future of Digital Marketing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,16:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,15:00,,,,,,False,,
+2024-07-31,Twitter,post,Twitter update,How to Optimize Digital Marketing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,16:00,,,,,,False,,
+2024-07-31,LinkedIn,post,LinkedIn update,The Future of Digital Marketing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,16:00,,,,,,False,,
 2024-07-31,Facebook,post,Facebook update,"🚀 Top Trends in Web Development 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,15:00,,,,,,False,
-2024-08-01,Twitter,post,Twitter update,How to Optimize Digital Marketing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,10:00,,,,,,False,
-2024-08-01,LinkedIn,post,LinkedIn update,The Future of Digital Marketing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,12:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,15:00,,,,,,False,,
+2024-08-01,Twitter,post,Twitter update,How to Optimize Digital Marketing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,10:00,,,,,,False,,
+2024-08-01,LinkedIn,post,LinkedIn update,The Future of Digital Marketing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,12:00,,,,,,False,,
 2024-08-01,Facebook,post,Facebook update,"🚀 Top Trends in Domain Investing 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,10:00,,,,,,False,
-2024-08-02,Twitter,post,Twitter update,Understanding SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,15:00,,,,,,False,
-2024-08-02,LinkedIn,post,LinkedIn update,Top Trends in Web Development: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,17:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,10:00,,,,,,False,,
+2024-08-02,Twitter,post,Twitter update,Understanding SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,15:00,,,,,,False,,
+2024-08-02,LinkedIn,post,LinkedIn update,Top Trends in Web Development: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,17:00,,,,,,False,,
 2024-08-02,Facebook,post,Facebook update,"🚀 How to Optimize E-commerce 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,09:00,,,,,,False,
-2024-08-03,Twitter,post,Twitter update,Understanding E-commerce. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,12:00,,,,,,False,
-2024-08-03,LinkedIn,post,LinkedIn update,Tips for Web Development: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,10:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,09:00,,,,,,False,,
+2024-08-03,Twitter,post,Twitter update,Understanding E-commerce. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,12:00,,,,,,False,,
+2024-08-03,LinkedIn,post,LinkedIn update,Tips for Web Development: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,10:00,,,,,,False,,
 2024-08-03,Facebook,post,Facebook update,"🚀 The Future of Domain Investing 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,17:00,,,,,,False,
-2024-08-04,Twitter,post,Twitter update,The Future of SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,12:00,,,,,,False,
-2024-08-04,LinkedIn,post,LinkedIn update,Understanding Domain Investing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,14:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,17:00,,,,,,False,,
+2024-08-04,Twitter,post,Twitter update,The Future of SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,12:00,,,,,,False,,
+2024-08-04,LinkedIn,post,LinkedIn update,Understanding Domain Investing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,14:00,,,,,,False,,
 2024-08-04,Facebook,post,Facebook update,"🚀 How to Optimize Domain Investing 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,12:00,,,,,,False,
-2024-08-05,Twitter,post,Twitter update,The Future of Domain Investing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,17:00,,,,,,False,
-2024-08-05,LinkedIn,post,LinkedIn update,Tips for Domain Investing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,13:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,12:00,,,,,,False,,
+2024-08-05,Twitter,post,Twitter update,The Future of Domain Investing. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,17:00,,,,,,False,,
+2024-08-05,LinkedIn,post,LinkedIn update,Tips for Domain Investing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,13:00,,,,,,False,,
 2024-08-05,Facebook,post,Facebook update,"🚀 Top Trends in Web Development 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,09:00,,,,,,False,
-2024-08-06,Twitter,post,Twitter update,How to Optimize Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,14:00,,,,,,False,
-2024-08-06,LinkedIn,post,LinkedIn update,Tips for SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,17:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,09:00,,,,,,False,,
+2024-08-06,Twitter,post,Twitter update,How to Optimize Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,14:00,,,,,,False,,
+2024-08-06,LinkedIn,post,LinkedIn update,Tips for SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,17:00,,,,,,False,,
 2024-08-06,Facebook,post,Facebook update,"🚀 The Future of Digital Marketing 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,12:00,,,,,,False,
-2024-08-07,Twitter,post,Twitter update,Tips for Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,10:00,,,,,,False,
-2024-08-07,LinkedIn,post,LinkedIn update,Top Trends in Domain Investing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,17:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,12:00,,,,,,False,,
+2024-08-07,Twitter,post,Twitter update,Tips for Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,10:00,,,,,,False,,
+2024-08-07,LinkedIn,post,LinkedIn update,Top Trends in Domain Investing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,17:00,,,,,,False,,
 2024-08-07,Facebook,post,Facebook update,"🚀 Top Trends in SEO 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,15:00,,,,,,False,
-2024-08-08,Twitter,post,Twitter update,Understanding Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,11:00,,,,,,False,
-2024-08-08,LinkedIn,post,LinkedIn update,Tips for Domain Investing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,15:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,15:00,,,,,,False,,
+2024-08-08,Twitter,post,Twitter update,Understanding Web Development. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,11:00,,,,,,False,,
+2024-08-08,LinkedIn,post,LinkedIn update,Tips for Domain Investing: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,15:00,,,,,,False,,
 2024-08-08,Facebook,post,Facebook update,"🚀 The Future of Domain Investing 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,11:00,,,,,,False,
-2024-08-09,Twitter,post,Twitter update,How to Optimize E-commerce. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,11:00,,,,,,False,
-2024-08-09,LinkedIn,post,LinkedIn update,Top Trends in SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,13:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,11:00,,,,,,False,,
+2024-08-09,Twitter,post,Twitter update,How to Optimize E-commerce. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,11:00,,,,,,False,,
+2024-08-09,LinkedIn,post,LinkedIn update,Top Trends in SEO: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,13:00,,,,,,False,,
 2024-08-09,Facebook,post,Facebook update,"🚀 How to Optimize Digital Marketing 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,17:00,,,,,,False,
-2024-08-10,Twitter,post,Twitter update,Understanding SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,16:00,,,,,,False,
-2024-08-10,LinkedIn,post,LinkedIn update,Understanding E-commerce: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,16:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,17:00,,,,,,False,,
+2024-08-10,Twitter,post,Twitter update,Understanding SEO. #DigitalStrategy #OnlineBusiness,social_media_team@example.com,16:00,,,,,,False,,
+2024-08-10,LinkedIn,post,LinkedIn update,Understanding E-commerce: A Comprehensive Guide for Professionals. Share your thoughts in the comments!,social_media_team@example.com,16:00,,,,,,False,,
 2024-08-10,Facebook,post,Facebook update,"🚀 How to Optimize Domain Investing 🚀
 
-Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,17:00,,,,,,False,
+Learn how this can transform your online presence. Click the link in our bio to read more!",social_media_team@example.com,17:00,,,,,,False,,
+2024-07-24,Twitter,post,Twitter update,1121 test,,23:22,,0.0,,,,False,,
+2025-02-10,Twitter,post,Twitter update,"When knowledge work can be delegated to Agentic workers, life is better. https://t.co/cQNNi73mBq embodies this new mindset. Listing soon on Top Domain Club! #Domains #Agentic https://t.co/wOeCJmgOVD",,12:00,1.8889597096146824e+18,13.0,7.0,0.0,0.0,False,,104.0
+2025-02-09,Twitter,post,Twitter update,Bargain! #Agent https://t.co/cbnVaAEkpU,,12:00,1.8885966572538104e+18,3.0,1.0,0.0,0.0,False,,52.0
+2025-02-07,Twitter,post,Twitter update,🚀 Attention Venture Capitalists &amp; Domain Investors! Are you looking to elevate your brand in the dynamic world of venture capital? Here's your golden opportunity: Introducing https://t.co/oZyZ1X2trL - A Premium Domain for Sale! Why https://t.co/oZyZ1X2trL? Brand Relevance: https://t.co/5IR75GR4DF,,12:00,1.8880738427505464e+18,1.0,0.0,0.0,0.0,False,,33.0
+2025-02-07,Twitter,post,Twitter update,"🚀 Attention Venture Capitalists &amp; Domain Investors! Are you looking to elevate your brand in the dynamic world of venture capital? Here's your golden opportunity: Introducing ""https://t.co/oZyZ1X2trL"" - A Premium Domain for Sale! 📷Why ""https://t.co/oZyZ1X2trL""? Brand https://t.co/igddfsSyr9",,12:00,1.8880733198508524e+18,2.0,0.0,0.0,0.0,False,,9.0
+2025-02-07,Twitter,post,Twitter update,"🚀 FOR SALE: Unlock the future with https://t.co/P598OZ485m! 🔥 A premium, ultra-catchy domain perfect for AI, tech, or bot-related ventures. 🌐 Don't miss out on this rare opportunity. DM for inquiries! #DomainForSale #PremiumDomain #AI #Tech #Bots #DubBot #Dub https://t.co/oF7rjC7P8F",,12:00,1.8878116383104248e+18,2.0,0.0,0.0,0.0,False,,86.0
+2025-02-04,Twitter,post,Twitter update,@DomainDiscovere TD.c and O.ds,,12:00,1.886925947234104e+18,2.0,2.0,0.0,0.0,False,,82.0
+2025-01-31,Twitter,post,Twitter update,Do you have a .xrp name yet? If not what are you waiting for?,,12:00,1.8854709901820805e+18,0.0,0.0,0.0,0.0,False,,63.0
+2025-01-28,Twitter,post,Twitter update,Premium dot com domain Agentic Job https://t.co/M2mBmJqg1q,,12:00,1.884421944000324e+18,3.0,1.0,0.0,0.0,False,,82.0
+2025-01-28,Twitter,post,Twitter update,@matthewegould brain.api mind.wave neuro.api https://t.co/3AkZKbYjty https://t.co/bVYwzLYryt https://t.co/G70IwmPgfq (thought bubble),,12:00,1.884420880119268e+18,3.0,2.0,0.0,0.0,False,,48.0
+2025-01-28,Twitter,post,Twitter update,Premium dot com domain Agentic Deal https://t.co/ZDqJXVdrO2,,12:00,1.884246548978308e+18,6.0,3.0,0.0,0.0,False,,103.0
+2025-01-27,Twitter,post,Twitter update,Premium dot com domain Agentic Code https://t.co/CDLVi1NFKj,,12:00,1.8840771979899287e+18,12.0,3.0,0.0,0.0,False,,196.0
+2024-12-26,Twitter,post,Twitter update,"Up to more than 19,000 XRP names now! Better get yours while you still can! https://t.co/nEfIHKTNuE",,12:00,1.8724645853176264e+18,8.0,4.0,0.0,0.0,False,,84.0
+2024-12-22,Twitter,post,Twitter update,@WorldEmojiBrand https://t.co/oZyZ1X2trL •Retrieval-Augmented Generation (RAG) An AI framework that combines the capabilities of large language models (LLMs) with traditional information retrieval systems: ◦RAG combines the generative power of LLMs with the precision of data search,,12:00,1.870886038333428e+18,5.0,2.0,0.0,0.0,False,,110.0
+2024-12-06,Twitter,post,Twitter update,https://t.co/Awjvvv1TXV,,12:00,1.8652349889728064e+18,7.0,4.0,0.0,0.0,False,,105.0
+2024-12-05,Twitter,post,Twitter update,@ADHDForReal You should see my Spotify wrapped stats 😬,,12:00,1.8647681355445988e+18,0.0,0.0,0.0,0.0,False,,21.0
+2024-12-05,Twitter,post,Twitter update,@DomainDegen Nice .U! Didn’t notice their availability until the email but snagged a fU of them myself,,12:00,1.864766964276851e+18,0.0,0.0,0.0,0.0,False,,10.0
+2024-12-05,Twitter,post,Twitter update,@Cozydomainer @Dynadot @dottechdomains @dynatodd Brutal,,12:00,1.864694166997095e+18,5.0,2.0,0.0,0.0,False,,55.0
+2024-12-05,Twitter,post,Twitter update,@NameBio Maybe just avoid Divorce and marriage and https://t.co/8MRIvCvVdc 😝,,12:00,1.864682090119484e+18,7.0,2.0,0.0,0.0,False,,104.0
+2024-12-03,Twitter,post,Twitter update,@JohanPoyhonen BOP.tea would be stronger tea https://t.co/aImAIOO394 https://t.co/C7039FxtXf,,12:00,1.8640989163936847e+18,8.0,1.0,1.0,0.0,False,,19.0
+2024-12-03,Twitter,post,Twitter update,@zerozerocoins @BruceGrahamArt GM,,12:00,1.8639516026522708e+18,0.0,0.0,0.0,0.0,False,,72.0
+2024-12-03,Twitter,post,Twitter update,@sandy_carter @unstoppableweb https://t.co/4jCWw2JYNd,,12:00,1.8639505550660529e+18,3.0,1.0,0.0,0.0,False,,35.0
+2024-12-03,Twitter,post,Twitter update,GM GM to my fellow tea sipping domainers https://t.co/5cvb8Yo6CF,,12:00,1.863946378159993e+18,19.0,10.0,1.0,0.0,False,,282.0
+2024-12-02,Twitter,post,Twitter update,@domainskaufhaus Welcome!,,12:00,1.863824347313624e+18,2.0,1.0,0.0,0.0,False,,11.0
+2024-12-02,Twitter,post,Twitter update,Do yourself and your future grandkids a favor and invest in .XRP names while it's early! 👉Link: https://t.co/nEfIHKTfF6 Just over 17k domains registered so far #Alpha #XRP https://t.co/MlR4J6UJwY,,12:00,1.863812152278033e+18,28.0,7.0,1.0,0.0,False,,270.0
+2024-12-02,Twitter,post,Twitter update,"@iandravid @Dynadot Oh wow! Definitely could, great call!",,12:00,1.863811871226135e+18,2.0,1.0,0.0,0.0,False,,16.0
+2024-12-02,Twitter,post,Twitter update,Do yourself and your future grandkids a favor and invest in .XRP names while it's early! 👉Link: https://t.co/nEfIHKTfF6 Just over 17k domains registered so far https://t.co/5gjJpT8oDG,,12:00,1.863811588823688e+18,4.0,1.0,0.0,0.0,False,,3.0
+2024-12-01,Twitter,post,Twitter update,@enstroll Feeling good about it,,12:00,1.863225838583612e+18,4.0,1.0,1.0,0.0,False,,11.0
+2024-12-01,Twitter,post,Twitter update,@MichaelCyger Smells good regardless!,,12:00,1.863213417223652e+18,3.0,2.0,0.0,0.0,False,,72.0
+2024-12-01,Twitter,post,Twitter update,@DomainDegen 🚀🌕,,12:00,1.8631544035421883e+18,1.0,1.0,0.0,0.0,False,,11.0
+2024-12-01,Twitter,post,Twitter update,"Time may tell when .moon names shall return to us domainers. Until then, let us be patient, enjoy our minted moons, and know that holding gets us to the moon. If I may, a poem: 🌙 'The Moon's Promise' 🌕 When Sister Moon (who guides us all) Behind earth's veil must journey https://t.co/QbW85vO6Ns",,12:00,1.863145792514524e+18,38.0,12.0,0.0,0.0,False,,384.0
+2024-11-30,Twitter,post,Twitter update,👨🏻‍🚀🌔 MAN . MOON 👨🏾‍🚀🌔 Accepting offers via DM for this premium LLL onchain domain while .moon awaits its return to @unstoppableweb marketplace #moon #domains #Web3Names #crypto https://t.co/SREbBYBViU,,12:00,1.863014248932127e+18,12.0,7.0,0.0,0.0,False,,416.0
+2024-11-23,Twitter,post,Twitter update,🛸🌔 PAD . MOON 🛸🌔 LISTED FOR SALE: $100K Perfect domain for launching web3 projects onchain. #launchpad #domains #Web3Names #crypto https://t.co/I03F9imLM0 https://t.co/PIvmI5z3S6,,12:00,1.8603273145230623e+18,11.0,5.0,2.0,0.0,False,,434.0
+2024-11-22,Twitter,post,Twitter update,Recently listed premium . moon name https://t.co/2Uh8qMZmmU,,12:00,1.8600852116835205e+18,1.0,0.0,0.0,0.0,False,,59.0
+2024-11-22,Twitter,post,Twitter update,🚀🌔 LAUNCH . MOON 🚀🌔 LISTED FOR SALE: $100K #launch #domains #Web3Names #crypto https://t.co/2Uh8qMZmmU https://t.co/o72x9x3HBm,,12:00,1.8600836317856727e+18,16.0,5.0,0.0,0.0,False,,226.0
+2024-11-22,Twitter,post,Twitter update,@jstenn13 Nice one,,12:00,1.85998907449036e+18,1.0,1.0,0.0,0.0,False,,57.0
+2024-11-22,Twitter,post,Twitter update,🪂 drop . moon 🌕 Listed for sale for just $5K! https://t.co/WWgdjFBqyx #web3 #airdrop #domainsforsale #unstoppablesnap https://t.co/Fgr00EQ9nm,,12:00,1.859986851677045e+18,3.0,1.0,0.0,0.0,False,,58.0
+2024-11-21,Twitter,post,Twitter update,https://t.co/Ff6HTiKFmv Listed for sale: hodl.moon $250K or best offer @unstoppableweb #moon #cryptocurrency #domains https://t.co/uVtFh18Y5i,,12:00,1.8598435788912072e+18,6.0,3.0,0.0,0.0,False,,93.0
+2024-11-16,Twitter,post,Twitter update,What do you think about the . cv TLD? Computer Vision? Cirriculum Vitae? Something else? Recently acquired a few on @Dynadot and curious about their potential... AutoGenerate /cv CoverLetter /cv Nightvision /cv Robot /cv #domains,,12:00,1.8580026934925235e+18,14.0,2.0,1.0,0.0,False,,163.0
+2024-11-15,Twitter,post,Twitter update,@AlexVerdea What AI brokerage are you referring to,,12:00,1.857624136262234e+18,1.0,1.0,0.0,0.0,False,,71.0
+2024-11-15,Twitter,post,Twitter update,Excited about this LLL . bet domain acquisition Pot . Bet https://t.co/az1fvjAtlO,,12:00,1.8575499617154417e+18,4.0,1.0,0.0,0.0,False,,99.0
+2024-11-14,Twitter,post,Twitter update,@DCLjasonx https://t.co/WOOnDe1mPO 🤖👀,,12:00,1.8572504336699968e+18,12.0,4.0,1.0,0.0,False,,96.0
+2024-11-13,Twitter,post,Twitter update,"@TonyDancaster We’ve listed https://t.co/4VV7upD9eb, https://t.co/smKgT1SpB0, and https://t.co/2BKWxiaM7r. https://t.co/tv2GKWFoTk",,12:00,1.856852569530012e+18,6.0,2.0,0.0,0.0,False,,74.0
+2024-11-13,Twitter,post,Twitter update,SilverCoins.eth on sale for 1 ETH https://t.co/Fv4upV2RCr #ens #eth,,12:00,1.8568515775351813e+18,5.0,2.0,0.0,0.0,False,,87.0
+2025-02-10,Twitter,post,Twitter update,"When knowledge work can be delegated to Agentic workers, life is better. https://t.co/cQNNi73mBq embodies this new mindset. Listing soon on Top Domain Club! #Domains #Agentic https://t.co/wOeCJmgOVD",,12:00,1.8889597096146824e+18,13.0,7.0,0.0,0.0,False,,104.0
+2025-02-09,Twitter,post,Twitter update,Bargain! #Agent https://t.co/cbnVaAEkpU,,12:00,1.8885966572538104e+18,3.0,1.0,0.0,0.0,False,,52.0
+2025-02-07,Twitter,post,Twitter update,🚀 Attention Venture Capitalists &amp; Domain Investors! Are you looking to elevate your brand in the dynamic world of venture capital? Here's your golden opportunity: Introducing https://t.co/oZyZ1X2trL - A Premium Domain for Sale! Why https://t.co/oZyZ1X2trL? Brand Relevance: https://t.co/5IR75GR4DF,,12:00,1.8880738427505464e+18,1.0,0.0,0.0,0.0,False,,33.0
+2025-02-07,Twitter,post,Twitter update,"🚀 Attention Venture Capitalists &amp; Domain Investors! Are you looking to elevate your brand in the dynamic world of venture capital? Here's your golden opportunity: Introducing ""https://t.co/oZyZ1X2trL"" - A Premium Domain for Sale! 📷Why ""https://t.co/oZyZ1X2trL""? Brand https://t.co/igddfsSyr9",,12:00,1.8880733198508524e+18,2.0,0.0,0.0,0.0,False,,9.0
+2025-02-07,Twitter,post,Twitter update,"🚀 FOR SALE: Unlock the future with https://t.co/P598OZ485m! 🔥 A premium, ultra-catchy domain perfect for AI, tech, or bot-related ventures. 🌐 Don't miss out on this rare opportunity. DM for inquiries! #DomainForSale #PremiumDomain #AI #Tech #Bots #DubBot #Dub https://t.co/oF7rjC7P8F",,12:00,1.8878116383104248e+18,2.0,0.0,0.0,0.0,False,,86.0
+2025-02-04,Twitter,post,Twitter update,@DomainDiscovere TD.c and O.ds,,12:00,1.8869259472341036e+18,2.0,2.0,0.0,0.0,False,,82.0
+2025-01-31,Twitter,post,Twitter update,Do you have a .xrp name yet? If not what are you waiting for?,,12:00,1.8854709901820805e+18,0.0,0.0,0.0,0.0,False,,63.0
+2025-01-28,Twitter,post,Twitter update,Premium dot com domain Agentic Job https://t.co/M2mBmJqg1q,,12:00,1.884421944000324e+18,3.0,1.0,0.0,0.0,False,,82.0
+2025-01-28,Twitter,post,Twitter update,@matthewegould brain.api mind.wave neuro.api https://t.co/3AkZKbYjty https://t.co/bVYwzLYryt https://t.co/G70IwmPgfq (thought bubble),,12:00,1.884420880119268e+18,3.0,2.0,0.0,0.0,False,,48.0
+2025-01-28,Twitter,post,Twitter update,Premium dot com domain Agentic Deal https://t.co/ZDqJXVdrO2,,12:00,1.884246548978308e+18,6.0,3.0,0.0,0.0,False,,103.0
+2025-01-27,Twitter,post,Twitter update,Premium dot com domain Agentic Code https://t.co/CDLVi1NFKj,,12:00,1.8840771979899287e+18,12.0,3.0,0.0,0.0,False,,196.0
+2024-12-26,Twitter,post,Twitter update,"Up to more than 19,000 XRP names now! Better get yours while you still can! https://t.co/nEfIHKTNuE",,12:00,1.8724645853176264e+18,8.0,4.0,0.0,0.0,False,,84.0
+2024-12-22,Twitter,post,Twitter update,@WorldEmojiBrand https://t.co/oZyZ1X2trL •Retrieval-Augmented Generation (RAG) An AI framework that combines the capabilities of large language models (LLMs) with traditional information retrieval systems: ◦RAG combines the generative power of LLMs with the precision of data search,,12:00,1.870886038333428e+18,5.0,2.0,0.0,0.0,False,,110.0
+2024-12-06,Twitter,post,Twitter update,https://t.co/Awjvvv1TXV,,12:00,1.8652349889728064e+18,7.0,4.0,0.0,0.0,False,,105.0
+2024-12-05,Twitter,post,Twitter update,@ADHDForReal You should see my Spotify wrapped stats 😬,,12:00,1.8647681355445988e+18,0.0,0.0,0.0,0.0,False,,21.0
+2024-12-05,Twitter,post,Twitter update,@DomainDegen Nice .U! Didn’t notice their availability until the email but snagged a fU of them myself,,12:00,1.864766964276851e+18,0.0,0.0,0.0,0.0,False,,10.0
+2024-12-05,Twitter,post,Twitter update,@Cozydomainer @Dynadot @dottechdomains @dynatodd Brutal,,12:00,1.864694166997095e+18,5.0,2.0,0.0,0.0,False,,55.0
+2024-12-05,Twitter,post,Twitter update,@NameBio Maybe just avoid Divorce and marriage and https://t.co/8MRIvCvVdc 😝,,12:00,1.8646820901194836e+18,7.0,2.0,0.0,0.0,False,,104.0
+2024-12-03,Twitter,post,Twitter update,@JohanPoyhonen BOP.tea would be stronger tea https://t.co/aImAIOO394 https://t.co/C7039FxtXf,,12:00,1.8640989163936847e+18,8.0,1.0,1.0,0.0,False,,19.0
+2024-12-03,Twitter,post,Twitter update,@zerozerocoins @BruceGrahamArt GM,,12:00,1.8639516026522708e+18,0.0,0.0,0.0,0.0,False,,72.0
+2024-12-03,Twitter,post,Twitter update,@sandy_carter @unstoppableweb https://t.co/4jCWw2JYNd,,12:00,1.8639505550660529e+18,3.0,1.0,0.0,0.0,False,,35.0
+2024-12-03,Twitter,post,Twitter update,GM GM to my fellow tea sipping domainers https://t.co/5cvb8Yo6CF,,12:00,1.863946378159993e+18,19.0,10.0,1.0,0.0,False,,282.0
+2024-12-02,Twitter,post,Twitter update,@domainskaufhaus Welcome!,,12:00,1.863824347313624e+18,2.0,1.0,0.0,0.0,False,,11.0
+2024-12-02,Twitter,post,Twitter update,Do yourself and your future grandkids a favor and invest in .XRP names while it's early! 👉Link: https://t.co/nEfIHKTfF6 Just over 17k domains registered so far #Alpha #XRP https://t.co/MlR4J6UJwY,,12:00,1.863812152278033e+18,28.0,7.0,1.0,0.0,False,,270.0
+2024-12-02,Twitter,post,Twitter update,"@iandravid @Dynadot Oh wow! Definitely could, great call!",,12:00,1.863811871226135e+18,2.0,1.0,0.0,0.0,False,,16.0
+2024-12-02,Twitter,post,Twitter update,Do yourself and your future grandkids a favor and invest in .XRP names while it's early! 👉Link: https://t.co/nEfIHKTfF6 Just over 17k domains registered so far https://t.co/5gjJpT8oDG,,12:00,1.8638115888236877e+18,4.0,1.0,0.0,0.0,False,,3.0
+2024-12-01,Twitter,post,Twitter update,@enstroll Feeling good about it,,12:00,1.863225838583612e+18,4.0,1.0,1.0,0.0,False,,11.0
+2024-12-01,Twitter,post,Twitter update,@MichaelCyger Smells good regardless!,,12:00,1.8632134172236516e+18,3.0,2.0,0.0,0.0,False,,72.0
+2024-12-01,Twitter,post,Twitter update,@DomainDegen 🚀🌕,,12:00,1.8631544035421883e+18,1.0,1.0,0.0,0.0,False,,11.0
+2024-12-01,Twitter,post,Twitter update,"Time may tell when .moon names shall return to us domainers. Until then, let us be patient, enjoy our minted moons, and know that holding gets us to the moon. If I may, a poem: 🌙 'The Moon's Promise' 🌕 When Sister Moon (who guides us all) Behind earth's veil must journey https://t.co/QbW85vO6Ns",,12:00,1.8631457925145236e+18,38.0,12.0,0.0,0.0,False,,384.0
+2024-11-30,Twitter,post,Twitter update,👨🏻‍🚀🌔 MAN . MOON 👨🏾‍🚀🌔 Accepting offers via DM for this premium LLL onchain domain while .moon awaits its return to @unstoppableweb marketplace #moon #domains #Web3Names #crypto https://t.co/SREbBYBViU,,12:00,1.863014248932127e+18,12.0,7.0,0.0,0.0,False,,416.0
+2024-11-23,Twitter,post,Twitter update,🛸🌔 PAD . MOON 🛸🌔 LISTED FOR SALE: $100K Perfect domain for launching web3 projects onchain. #launchpad #domains #Web3Names #crypto https://t.co/I03F9imLM0 https://t.co/PIvmI5z3S6,,12:00,1.8603273145230623e+18,11.0,5.0,2.0,0.0,False,,434.0
+2024-11-22,Twitter,post,Twitter update,Recently listed premium . moon name https://t.co/2Uh8qMZmmU,,12:00,1.8600852116835205e+18,1.0,0.0,0.0,0.0,False,,59.0
+2024-11-22,Twitter,post,Twitter update,🚀🌔 LAUNCH . MOON 🚀🌔 LISTED FOR SALE: $100K #launch #domains #Web3Names #crypto https://t.co/2Uh8qMZmmU https://t.co/o72x9x3HBm,,12:00,1.8600836317856727e+18,16.0,5.0,0.0,0.0,False,,226.0
+2024-11-22,Twitter,post,Twitter update,@jstenn13 Nice one,,12:00,1.85998907449036e+18,1.0,1.0,0.0,0.0,False,,57.0
+2024-11-22,Twitter,post,Twitter update,🪂 drop . moon 🌕 Listed for sale for just $5K! https://t.co/WWgdjFBqyx #web3 #airdrop #domainsforsale #unstoppablesnap https://t.co/Fgr00EQ9nm,,12:00,1.859986851677045e+18,3.0,1.0,0.0,0.0,False,,58.0
+2024-11-21,Twitter,post,Twitter update,https://t.co/Ff6HTiKFmv Listed for sale: hodl.moon $250K or best offer @unstoppableweb #moon #cryptocurrency #domains https://t.co/uVtFh18Y5i,,12:00,1.8598435788912072e+18,6.0,3.0,0.0,0.0,False,,93.0
+2024-11-16,Twitter,post,Twitter update,What do you think about the . cv TLD? Computer Vision? Cirriculum Vitae? Something else? Recently acquired a few on @Dynadot and curious about their potential... AutoGenerate /cv CoverLetter /cv Nightvision /cv Robot /cv #domains,,12:00,1.8580026934925235e+18,14.0,2.0,1.0,0.0,False,,163.0
+2024-11-15,Twitter,post,Twitter update,@AlexVerdea What AI brokerage are you referring to,,12:00,1.857624136262234e+18,1.0,1.0,0.0,0.0,False,,71.0
+2024-11-15,Twitter,post,Twitter update,Excited about this LLL . bet domain acquisition Pot . Bet https://t.co/az1fvjAtlO,,12:00,1.8575499617154417e+18,4.0,1.0,0.0,0.0,False,,99.0
+2024-11-14,Twitter,post,Twitter update,@DCLjasonx https://t.co/WOOnDe1mPO 🤖👀,,12:00,1.8572504336699968e+18,12.0,4.0,1.0,0.0,False,,96.0
+2024-11-13,Twitter,post,Twitter update,"@TonyDancaster We’ve listed https://t.co/4VV7upD9eb, https://t.co/smKgT1SpB0, and https://t.co/2BKWxiaM7r. https://t.co/tv2GKWFoTk",,12:00,1.856852569530012e+18,6.0,2.0,0.0,0.0,False,,74.0
+2024-11-13,Twitter,post,Twitter update,SilverCoins.eth on sale for 1 ETH https://t.co/Fv4upV2RCr #ens #eth,,12:00,1.8568515775351813e+18,5.0,2.0,0.0,0.0,False,,87.0
+2025-02-10,Twitter,post,Twitter update,"When knowledge work can be delegated to Agentic workers, life is better. https://t.co/cQNNi73mBq embodies this new mindset. Listing soon on Top Domain Club! #Domains #Agentic https://t.co/wOeCJmgOVD",,12:00,1.8889597096146824e+18,13.0,7.0,0.0,0.0,False,,104.0
+2025-02-09,Twitter,post,Twitter update,Bargain! #Agent https://t.co/cbnVaAEkpU,,12:00,1.8885966572538104e+18,3.0,1.0,0.0,0.0,False,,52.0
+2025-02-07,Twitter,post,Twitter update,🚀 Attention Venture Capitalists &amp; Domain Investors! Are you looking to elevate your brand in the dynamic world of venture capital? Here's your golden opportunity: Introducing https://t.co/oZyZ1X2trL - A Premium Domain for Sale! Why https://t.co/oZyZ1X2trL? Brand Relevance: https://t.co/5IR75GR4DF,,12:00,1.8880738427505464e+18,1.0,0.0,0.0,0.0,False,,33.0
+2025-02-07,Twitter,post,Twitter update,"🚀 Attention Venture Capitalists &amp; Domain Investors! Are you looking to elevate your brand in the dynamic world of venture capital? Here's your golden opportunity: Introducing ""https://t.co/oZyZ1X2trL"" - A Premium Domain for Sale! 📷Why ""https://t.co/oZyZ1X2trL""? Brand https://t.co/igddfsSyr9",,12:00,1.8880733198508524e+18,2.0,0.0,0.0,0.0,False,,9.0
+2025-02-07,Twitter,post,Twitter update,"🚀 FOR SALE: Unlock the future with https://t.co/P598OZ485m! 🔥 A premium, ultra-catchy domain perfect for AI, tech, or bot-related ventures. 🌐 Don't miss out on this rare opportunity. DM for inquiries! #DomainForSale #PremiumDomain #AI #Tech #Bots #DubBot #Dub https://t.co/oF7rjC7P8F",,12:00,1.8878116383104248e+18,2.0,0.0,0.0,0.0,False,,86.0
+2025-02-04,Twitter,post,Twitter update,@DomainDiscovere TD.c and O.ds,,12:00,1.8869259472341033e+18,2.0,2.0,0.0,0.0,False,,82.0
+2025-01-31,Twitter,post,Twitter update,Do you have a .xrp name yet? If not what are you waiting for?,,12:00,1.8854709901820805e+18,0.0,0.0,0.0,0.0,False,,63.0
+2025-01-28,Twitter,post,Twitter update,Premium dot com domain Agentic Job https://t.co/M2mBmJqg1q,,12:00,1.8844219440003236e+18,3.0,1.0,0.0,0.0,False,,82.0
+2025-01-28,Twitter,post,Twitter update,@matthewegould brain.api mind.wave neuro.api https://t.co/3AkZKbYjty https://t.co/bVYwzLYryt https://t.co/G70IwmPgfq (thought bubble),,12:00,1.8844208801192678e+18,3.0,2.0,0.0,0.0,False,,48.0
+2025-01-28,Twitter,post,Twitter update,Premium dot com domain Agentic Deal https://t.co/ZDqJXVdrO2,,12:00,1.8842465489783076e+18,6.0,3.0,0.0,0.0,False,,103.0
+2025-01-27,Twitter,post,Twitter update,Premium dot com domain Agentic Code https://t.co/CDLVi1NFKj,,12:00,1.8840771979899292e+18,12.0,3.0,0.0,0.0,False,,196.0
+2024-12-26,Twitter,post,Twitter update,"Up to more than 19,000 XRP names now! Better get yours while you still can! https://t.co/nEfIHKTNuE",,12:00,1.8724645853176264e+18,8.0,4.0,0.0,0.0,False,,84.0
+2024-12-22,Twitter,post,Twitter update,@WorldEmojiBrand https://t.co/oZyZ1X2trL •Retrieval-Augmented Generation (RAG) An AI framework that combines the capabilities of large language models (LLMs) with traditional information retrieval systems: ◦RAG combines the generative power of LLMs with the precision of data search,,12:00,1.8708860383334277e+18,5.0,2.0,0.0,0.0,False,,110.0
+2024-12-06,Twitter,post,Twitter update,https://t.co/Awjvvv1TXV,,12:00,1.8652349889728064e+18,7.0,4.0,0.0,0.0,False,,105.0
+2024-12-05,Twitter,post,Twitter update,@ADHDForReal You should see my Spotify wrapped stats 😬,,12:00,1.8647681355445988e+18,0.0,0.0,0.0,0.0,False,,21.0
+2024-12-05,Twitter,post,Twitter update,@DomainDegen Nice .U! Didn’t notice their availability until the email but snagged a fU of them myself,,12:00,1.864766964276851e+18,0.0,0.0,0.0,0.0,False,,10.0
+2024-12-05,Twitter,post,Twitter update,@Cozydomainer @Dynadot @dottechdomains @dynatodd Brutal,,12:00,1.8646941669970947e+18,5.0,2.0,0.0,0.0,False,,55.0
+2024-12-05,Twitter,post,Twitter update,@NameBio Maybe just avoid Divorce and marriage and https://t.co/8MRIvCvVdc 😝,,12:00,1.8646820901194834e+18,7.0,2.0,0.0,0.0,False,,104.0
+2024-12-03,Twitter,post,Twitter update,@JohanPoyhonen BOP.tea would be stronger tea https://t.co/aImAIOO394 https://t.co/C7039FxtXf,,12:00,1.8640989163936852e+18,8.0,1.0,1.0,0.0,False,,19.0
+2024-12-03,Twitter,post,Twitter update,@zerozerocoins @BruceGrahamArt GM,,12:00,1.8639516026522708e+18,0.0,0.0,0.0,0.0,False,,72.0
+2024-12-03,Twitter,post,Twitter update,@sandy_carter @unstoppableweb https://t.co/4jCWw2JYNd,,12:00,1.8639505550660526e+18,3.0,1.0,0.0,0.0,False,,35.0
+2024-12-03,Twitter,post,Twitter update,GM GM to my fellow tea sipping domainers https://t.co/5cvb8Yo6CF,,12:00,1.863946378159993e+18,19.0,10.0,1.0,0.0,False,,282.0
+2024-12-02,Twitter,post,Twitter update,@domainskaufhaus Welcome!,,12:00,1.8638243473136236e+18,2.0,1.0,0.0,0.0,False,,11.0
+2024-12-02,Twitter,post,Twitter update,Do yourself and your future grandkids a favor and invest in .XRP names while it's early! 👉Link: https://t.co/nEfIHKTfF6 Just over 17k domains registered so far #Alpha #XRP https://t.co/MlR4J6UJwY,,12:00,1.8638121522780326e+18,28.0,7.0,1.0,0.0,False,,270.0
+2024-12-02,Twitter,post,Twitter update,"@iandravid @Dynadot Oh wow! Definitely could, great call!",,12:00,1.863811871226135e+18,2.0,1.0,0.0,0.0,False,,16.0
+2024-12-02,Twitter,post,Twitter update,Do yourself and your future grandkids a favor and invest in .XRP names while it's early! 👉Link: https://t.co/nEfIHKTfF6 Just over 17k domains registered so far https://t.co/5gjJpT8oDG,,12:00,1.8638115888236874e+18,4.0,1.0,0.0,0.0,False,,3.0
+2024-12-01,Twitter,post,Twitter update,@enstroll Feeling good about it,,12:00,1.863225838583612e+18,4.0,1.0,1.0,0.0,False,,11.0
+2024-12-01,Twitter,post,Twitter update,@MichaelCyger Smells good regardless!,,12:00,1.8632134172236513e+18,3.0,2.0,0.0,0.0,False,,72.0
+2024-12-01,Twitter,post,Twitter update,@DomainDegen 🚀🌕,,12:00,1.8631544035421883e+18,1.0,1.0,0.0,0.0,False,,11.0
+2024-12-01,Twitter,post,Twitter update,"Time may tell when .moon names shall return to us domainers. Until then, let us be patient, enjoy our minted moons, and know that holding gets us to the moon. If I may, a poem: 🌙 'The Moon's Promise' 🌕 When Sister Moon (who guides us all) Behind earth's veil must journey https://t.co/QbW85vO6Ns",,12:00,1.8631457925145234e+18,38.0,12.0,0.0,0.0,False,,384.0
+2024-11-30,Twitter,post,Twitter update,👨🏻‍🚀🌔 MAN . MOON 👨🏾‍🚀🌔 Accepting offers via DM for this premium LLL onchain domain while .moon awaits its return to @unstoppableweb marketplace #moon #domains #Web3Names #crypto https://t.co/SREbBYBViU,,12:00,1.863014248932127e+18,12.0,7.0,0.0,0.0,False,,416.0
+2024-11-23,Twitter,post,Twitter update,🛸🌔 PAD . MOON 🛸🌔 LISTED FOR SALE: $100K Perfect domain for launching web3 projects onchain. #launchpad #domains #Web3Names #crypto https://t.co/I03F9imLM0 https://t.co/PIvmI5z3S6,,12:00,1.8603273145230623e+18,11.0,5.0,2.0,0.0,False,,434.0
+2024-11-22,Twitter,post,Twitter update,Recently listed premium . moon name https://t.co/2Uh8qMZmmU,,12:00,1.8600852116835205e+18,1.0,0.0,0.0,0.0,False,,59.0
+2024-11-22,Twitter,post,Twitter update,🚀🌔 LAUNCH . MOON 🚀🌔 LISTED FOR SALE: $100K #launch #domains #Web3Names #crypto https://t.co/2Uh8qMZmmU https://t.co/o72x9x3HBm,,12:00,1.8600836317856732e+18,16.0,5.0,0.0,0.0,False,,226.0
+2024-11-22,Twitter,post,Twitter update,@jstenn13 Nice one,,12:00,1.85998907449036e+18,1.0,1.0,0.0,0.0,False,,57.0
+2024-11-22,Twitter,post,Twitter update,🪂 drop . moon 🌕 Listed for sale for just $5K! https://t.co/WWgdjFBqyx #web3 #airdrop #domainsforsale #unstoppablesnap https://t.co/Fgr00EQ9nm,,12:00,1.859986851677045e+18,3.0,1.0,0.0,0.0,False,,58.0
+2024-11-21,Twitter,post,Twitter update,https://t.co/Ff6HTiKFmv Listed for sale: hodl.moon $250K or best offer @unstoppableweb #moon #cryptocurrency #domains https://t.co/uVtFh18Y5i,,12:00,1.8598435788912072e+18,6.0,3.0,0.0,0.0,False,,93.0
+2024-11-16,Twitter,post,Twitter update,What do you think about the . cv TLD? Computer Vision? Cirriculum Vitae? Something else? Recently acquired a few on @Dynadot and curious about their potential... AutoGenerate /cv CoverLetter /cv Nightvision /cv Robot /cv #domains,,12:00,1.8580026934925233e+18,14.0,2.0,1.0,0.0,False,,163.0
+2024-11-15,Twitter,post,Twitter update,@AlexVerdea What AI brokerage are you referring to,,12:00,1.857624136262234e+18,1.0,1.0,0.0,0.0,False,,71.0
+2024-11-15,Twitter,post,Twitter update,Excited about this LLL . bet domain acquisition Pot . Bet https://t.co/az1fvjAtlO,,12:00,1.8575499617154417e+18,4.0,1.0,0.0,0.0,False,,99.0
+2024-11-14,Twitter,post,Twitter update,@DCLjasonx https://t.co/WOOnDe1mPO 🤖👀,,12:00,1.8572504336699968e+18,12.0,4.0,1.0,0.0,False,,96.0
+2024-11-13,Twitter,post,Twitter update,"@TonyDancaster We’ve listed https://t.co/4VV7upD9eb, https://t.co/smKgT1SpB0, and https://t.co/2BKWxiaM7r. https://t.co/tv2GKWFoTk",,12:00,1.856852569530012e+18,6.0,2.0,0.0,0.0,False,,74.0
+2024-11-13,Twitter,post,Twitter update,SilverCoins.eth on sale for 1 ETH https://t.co/Fv4upV2RCr #ens #eth,,12:00,1.8568515775351813e+18,5.0,2.0,0.0,0.0,False,,87.0
