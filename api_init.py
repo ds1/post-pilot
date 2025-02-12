@@ -29,8 +29,5 @@ def init_linkedin():
         settings.get('LINKEDIN_CLIENT_SECRET', '')
     )
 
-def init_facebook():
-    return GraphAPI(access_token=settings.get('FACEBOOK_ACCESS_TOKEN', ''))
-
 def init_openai():
     openai.api_key = settings.get('OPENAI_API_KEY', '')

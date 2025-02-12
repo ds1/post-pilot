@@ -17,8 +17,8 @@
     <!-- Babel -->
     <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
     
-    <!-- Recharts and Dependencies -->
-    <script src="https://unpkg.com/recharts@2.1.12/umd/Recharts.js"></script>
+    <!-- Recharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.10.4/Recharts.js"></script>
     
     <!-- Utilities -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
@@ -26,6 +26,19 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        // Initialize QWebChannel
+        window.onload = function() {
+            new QWebChannel(qt.webChannelTransport, function(channel) {
+                window.bridge = channel.objects.bridge;
+                // Signal that the bridge is ready
+                if (window.onBridgeReady) {
+                    window.onBridgeReady();
+                }
+            });
+        };
+    </script>
 </head>
 <body>
     <div id="root"></div>

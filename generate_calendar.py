@@ -18,7 +18,7 @@ def generate_content(platform):
 
 def generate_calendar():
     start_date = datetime.now().date()
-    platforms = ["Twitter", "LinkedIn", "Facebook"]
+    platforms = ["Twitter", "LinkedIn"]
     data = []
     
     for i in range(28):  # 4 weeks

@@ -9,6 +9,7 @@ from api_handlers import post_content, update_engagement_metrics
 from utils.nlp_utils import generate_content_suggestions, apply_insights_to_future_content
 from utils.ml_utils import optimize_content_strategy, create_ab_tests, analyze_ab_test_results, incorporate_ab_test_results
 from api_init import load_settings, init_openai
+from utils.twitter_optimizer import TwitterContentOptimizer
 
 settings = load_settings()
 
@@ -21,6 +22,30 @@ content_calendar = ContentCalendar()
 
 def run_content_optimization():
     logging.info("Running content optimization process...")
+    
+    # Initialize the Twitter optimizer
+    twitter_optimizer = TwitterContentOptimizer(content_calendar)
+    
+    # Train the model
+    if twitter_optimizer.train_model():
+        # Generate and schedule new content for upcoming week
+        topics = ["Digital Marketing", "SEO", "Web Development", 
+                 "Social Media Strategy", "Content Marketing"]
+        
+        # Generate time slots for next week
+        from datetime import datetime, timedelta
+        start_date = datetime.now() + timedelta(days=1)
+        time_slots = [
+            (start_date + timedelta(days=x)).strftime('%Y-%m-%d %H:%M')
+            for x in range(7)
+            for h in [9, 12, 15, 17]  # Multiple slots per day
+        ]
+        
+        # Schedule optimized content
+        for topic in topics:
+            twitter_optimizer.schedule_optimized_content(topic, time_slots)
+    
+    # Run existing optimization processes
     suggestions = generate_content_suggestions(content_calendar)
     if suggestions:
         create_ab_tests(content_calendar, suggestions)
@@ -28,10 +53,6 @@ def run_content_optimization():
     winning_post = analyze_ab_test_results(content_calendar)
     incorporate_ab_test_results(content_calendar, winning_post)
     feature_importance = optimize_content_strategy(content_calendar)
-    logging.info("Content optimization process completed.")
-    if feature_importance is not None:
-        logging.info("Top 5 important features for engagement:")
-        logging.info(feature_importance.head().to_string(index=False))
 
 def schedule_posts():
     schedule.clear()  # Clear existing schedule

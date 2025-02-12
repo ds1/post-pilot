@@ -259,7 +259,7 @@ class PostDialog(QDialog):
             layout.addRow("Due Date:", self.due_date)
             
             self.platform = QComboBox()
-            self.platform.addItems(["Twitter", "LinkedIn", "Facebook"])
+            self.platform.addItems(["Twitter", "LinkedIn"])
             layout.addRow("Platform:", self.platform)
             
             self.content_type = QLineEdit()
@@ -418,12 +418,12 @@ class SettingsTab(QWidget):
         linkedin_group.setLayout(linkedin_layout)
         scroll_layout.addWidget(linkedin_group)
         
-        facebook_group = QGroupBox("Facebook API Settings")
-        facebook_layout = QFormLayout()
-        self.facebook_access_token = QLineEdit()
-        facebook_layout.addRow("Access Token:", self.facebook_access_token)
-        facebook_group.setLayout(facebook_layout)
-        scroll_layout.addWidget(facebook_group)
+        # facebook_group = QGroupBox("Facebook API Settings")
+        # facebook_layout = QFormLayout()
+        # self.facebook_access_token = QLineEdit()
+        # facebook_layout.addRow("Access Token:", self.facebook_access_token)
+        # facebook_group.setLayout(facebook_layout)
+        # scroll_layout.addWidget(facebook_group)
         
         openai_group = QGroupBox("OpenAI API Settings")
         openai_layout = QFormLayout()
@@ -455,7 +455,6 @@ class SettingsTab(QWidget):
                 self.twitter_access_token_secret.setText(settings.get('TWITTER_ACCESS_TOKEN_SECRET', ''))
                 self.linkedin_client_id.setText(settings.get('LINKEDIN_CLIENT_ID', ''))
                 self.linkedin_client_secret.setText(settings.get('LINKEDIN_CLIENT_SECRET', ''))
-                self.facebook_access_token.setText(settings.get('FACEBOOK_ACCESS_TOKEN', ''))
                 self.openai_api_key.setText(settings.get('OPENAI_API_KEY', ''))
 
     def save_settings(self):
@@ -468,7 +467,6 @@ class SettingsTab(QWidget):
             'TWITTER_ACCESS_TOKEN_SECRET': self.twitter_access_token_secret.text(),
             'LINKEDIN_CLIENT_ID': self.linkedin_client_id.text(),
             'LINKEDIN_CLIENT_SECRET': self.linkedin_client_secret.text(),
-            'FACEBOOK_ACCESS_TOKEN': self.facebook_access_token.text(),
             'OPENAI_API_KEY': self.openai_api_key.text()
         }
         

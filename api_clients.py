@@ -2,7 +2,6 @@ import json
 import logging
 import tweepy
 from linkedin_api import Linkedin
-from facebook import GraphAPI
 import openai
 
 def load_settings():
@@ -36,12 +35,8 @@ def get_linkedin_api():
         logging.error(f"Error initializing LinkedIn API: {str(e)}")
         return None
 
-def init_facebook():
-    return GraphAPI(access_token=settings.get('FACEBOOK_ACCESS_TOKEN', ''))
-
 def init_openai():
     openai.api_key = settings.get('OPENAI_API_KEY', '')
 
 twitter_api = init_twitter()
-facebook_api = init_facebook()
 init_openai()

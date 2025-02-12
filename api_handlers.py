@@ -3,7 +3,7 @@ import logging
 import json
 from datetime import datetime
 import pandas as pd
-from api_init import init_twitter, init_linkedin, init_facebook
+from api_init import init_twitter, init_linkedin
 
 def post_to_twitter(content):
     try:
@@ -26,16 +26,6 @@ def post_to_linkedin(content):
         logging.error(f"Error posting to LinkedIn: {e}")
         return None
 
-def post_to_facebook(content):
-    try:
-        facebook_api = init_facebook()
-        response = facebook_api.put_object("me", "feed", message=content)
-        logging.info(f"Posted to Facebook: {content[:50]}...")
-        return response['id']
-    except Exception as e:
-        logging.error(f"Error posting to Facebook: {e}")
-        return None
-
 def post_content(calendar, row):
     platform = row['platform']
     content = row['content']
@@ -49,8 +39,6 @@ def post_content(calendar, row):
             post_id = post_to_twitter(content)
         elif platform == "LinkedIn":
             post_id = post_to_linkedin(content)
-        elif platform == "Facebook":
-            post_id = post_to_facebook(content)
         
         if post_id:
             calendar.update_post(row.name, post_id=post_id, posted_at=now.strftime("%Y-%m-%d %H:%M"))
