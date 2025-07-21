@@ -1,15 +1,16 @@
 import spacy
 import textstat
 from sklearn.feature_extraction.text import TfidfVectorizer
-from transformers import pipeline, AutoModelForSequenceClassification, AutoTokenizer
-import torch
+# from transformers import pipeline, AutoModelForSequenceClassification, AutoTokenizer
+# import torch
 import openai
 from api_init import load_settings, init_openai
 import logging
-from transformers import logging as transformers_logging
+import random  # Add this import
+# from transformers import logging as transformers_logging
 
 # Set logging level for transformers
-transformers_logging.set_verbosity_error()
+# transformers_logging.set_verbosity_error()
 
 # Set up logging for your application
 logging.basicConfig(level=logging.INFO)
@@ -24,18 +25,18 @@ init_openai()
 # Load spaCy model
 nlp = spacy.load("en_core_web_sm")
 
-# Initialize sentiment analysis pipeline
-sentiment_analyzer = pipeline("sentiment-analysis")
+# Initialize sentiment analysis pipeline - COMMENTED OUT
+# sentiment_analyzer = pipeline("sentiment-analysis")
 
 # Initialize TF-IDF vectorizer
 tfidf = TfidfVectorizer(max_features=100)
 
-# Load a specific model for sentiment analysis
-model_name = "distilbert-base-uncased-finetuned-sst-2-english"
-revision = "af0f99b"  # Specify the revision
-model = AutoModelForSequenceClassification.from_pretrained(model_name, revision=revision)
-tokenizer = AutoTokenizer.from_pretrained(model_name, revision=revision)
-sentiment_analyzer = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
+# Load a specific model for sentiment analysis - COMMENTED OUT
+# model_name = "distilbert-base-uncased-finetuned-sst-2-english"
+# revision = "af0f99b"  # Specify the revision
+# model = AutoModelForSequenceClassification.from_pretrained(model_name, revision=revision)
+# tokenizer = AutoTokenizer.from_pretrained(model_name, revision=revision)
+# sentiment_analyzer = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
 
 def analyze_content(content):
     """
@@ -57,35 +58,46 @@ def analyze_content(content):
 
 def get_sentiment(text, max_length=512):
     """
-    Perform sentiment analysis on the given text, handling long texts by chunking.
+    Perform sentiment analysis on the given text - SIMPLIFIED VERSION
     """
-    chunks = [text[i:i+max_length] for i in range(0, len(text), max_length)]
-    results = sentiment_analyzer(chunks)
+    # Simple sentiment analysis without transformers
+    # This is a placeholder - you can implement a simple rule-based approach
+    # or use TextBlob, VADER, etc. instead
+    positive_words = ['good', 'great', 'excellent', 'amazing', 'wonderful', 'fantastic', 'love']
+    negative_words = ['bad', 'terrible', 'awful', 'hate', 'horrible', 'poor', 'worst']
     
-    # Aggregate results
-    positive_score = sum(result['score'] for result in results if result['label'] == 'POSITIVE')
-    negative_score = sum(result['score'] for result in results if result['label'] == 'NEGATIVE')
+    text_lower = text.lower()
+    positive_count = sum(1 for word in positive_words if word in text_lower)
+    negative_count = sum(1 for word in negative_words if word in text_lower)
     
-    if positive_score > negative_score:
-        return {'label': 'POSITIVE', 'score': positive_score / len(chunks)}
+    if positive_count > negative_count:
+        return {'label': 'POSITIVE', 'score': 0.8}
+    elif negative_count > positive_count:
+        return {'label': 'NEGATIVE', 'score': 0.8}
     else:
-        return {'label': 'NEGATIVE', 'score': negative_score / len(chunks)}
+        return {'label': 'NEUTRAL', 'score': 0.6}
 
 def get_top_keywords(texts, n=5):
     """
     Extract top n keywords from a list of texts using TF-IDF.
     """
-    tfidf_matrix = tfidf.fit_transform(texts)
-    feature_names = tfidf.get_feature_names_out()
-    
-    top_keywords = []
-    for i in range(len(texts)):
-        feature_index = tfidf_matrix[i,:].nonzero()[1]
-        tfidf_scores = zip(feature_index, [tfidf_matrix[i, x] for x in feature_index])
-        sorted_scores = sorted(tfidf_scores, key=lambda x: x[1], reverse=True)
-        top_keywords.append([feature_names[i] for i, score in sorted_scores[:n]])
-    
-    return top_keywords[0] if len(texts) == 1 else top_keywords
+    if not texts or not texts[0]:  # Handle empty texts
+        return []
+        
+    try:
+        tfidf_matrix = tfidf.fit_transform(texts)
+        feature_names = tfidf.get_feature_names_out()
+        
+        top_keywords = []
+        for i in range(len(texts)):
+            feature_index = tfidf_matrix[i,:].nonzero()[1]
+            tfidf_scores = zip(feature_index, [tfidf_matrix[i, x] for x in feature_index])
+            sorted_scores = sorted(tfidf_scores, key=lambda x: x[1], reverse=True)
+            top_keywords.append([feature_names[i] for i, score in sorted_scores[:n]])
+        
+        return top_keywords[0] if len(texts) == 1 else top_keywords
+    except:
+        return []
 
 def generate_content(prompt, max_tokens=100):
     """
@@ -163,8 +175,9 @@ def generate_content_suggestions(content_calendar):
         if len(analysis['entities']) > 3:
             suggestion['insights'].append("Include multiple relevant entities in your content")
         
-        top_keywords = ', '.join(analysis['top_keywords'][:3])
-        suggestion['insights'].append(f"Consider using these keywords: {top_keywords}")
+        if analysis['top_keywords']:
+            top_keywords = ', '.join(analysis['top_keywords'][:3])
+            suggestion['insights'].append(f"Consider using these keywords: {top_keywords}")
 
         suggestions.append(suggestion)
 
@@ -189,8 +202,8 @@ def apply_insights_to_future_content(content_calendar, suggestions):
                     new_content = improve_sentiment(new_content)
                 elif "readability" in insight.lower():
                     new_content = improve_readability(new_content)
-                elif "keywords" in insight.lower():
-                    new_content = incorporate_keywords(new_content, suggestion['top_keywords'])
+                elif "keywords" in insight.lower() and 'top_keywords' in locals():
+                    new_content = incorporate_keywords(new_content, suggestion.get('top_keywords', []))
             
             # Update the post with new content
             content_calendar.update_post(post['index'], content=new_content)
@@ -206,4 +219,6 @@ def improve_readability(content):
 
 def incorporate_keywords(content, keywords):
     # Placeholder function to incorporate keywords
-    return content + f" #{' #'.join(keywords)}"
+    if keywords and isinstance(keywords, list):
+        return content + f" #{' #'.join(keywords)}"
+    return content

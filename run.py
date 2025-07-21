@@ -4,10 +4,10 @@ import logging
 from PyQt5.QtWidgets import QApplication
 from gui import MainWindow
 import warnings
-from transformers import logging as transformers_logging
+# from transformers import logging as transformers_logging  # REMOVED
 
 warnings.filterwarnings("ignore")
-transformers_logging.set_verbosity_error()
+# transformers_logging.set_verbosity_error()  # REMOVED
 
 def setup_logging():
     log_dir = os.path.dirname(os.path.abspath(__file__))

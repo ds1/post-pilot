@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import TimeSeriesSplit
 from sklearn.preprocessing import StandardScaler
 from sklearn.feature_extraction.text import TfidfVectorizer
-from transformers import pipeline
+# from transformers import pipeline  # REMOVED
 import spacy
 from datetime import datetime
 import logging
@@ -16,9 +16,10 @@ class TwitterContentOptimizer:
     def __init__(self, content_calendar):
         self.content_calendar = content_calendar
         self.nlp = spacy.load("en_core_web_sm")
-        self.sentiment_analyzer = pipeline("sentiment-analysis", 
-            model="distilbert/distilbert-base-uncased-finetuned-sst-2-english",
-            revision="714eb0f")
+        # REMOVED transformer sentiment analyzer
+        # self.sentiment_analyzer = pipeline("sentiment-analysis", 
+        #     model="distilbert/distilbert-base-uncased-finetuned-sst-2-english",
+        #     revision="714eb0f")
         self.scaler = StandardScaler()
         self.model = RandomForestRegressor(
             n_estimators=100,
@@ -33,11 +34,27 @@ class TwitterContentOptimizer:
         df['is_weekend'] = df['day_of_week'].isin([5, 6]).astype(int)
         
         # Time block features
-        df['is_morning'] = (df['hour'] >= 6) & (df['hour'] < 12).astype(int)
-        df['is_afternoon'] = (df['hour'] >= 12) & (df['hour'] < 17).astype(int)
-        df['is_evening'] = (df['hour'] >= 17) & (df['hour'] < 22).astype(int)
+        df['is_morning'] = ((df['hour'] >= 6) & (df['hour'] < 12)).astype(int)
+        df['is_afternoon'] = ((df['hour'] >= 12) & (df['hour'] < 17)).astype(int)
+        df['is_evening'] = ((df['hour'] >= 17) & (df['hour'] < 22)).astype(int)
         
         return df
+    
+    def simple_sentiment_analysis(self, text):
+        """Simple rule-based sentiment analysis"""
+        positive_words = ['good', 'great', 'excellent', 'amazing', 'wonderful', 'fantastic', 'love', 'best', 'happy', 'excited']
+        negative_words = ['bad', 'terrible', 'awful', 'hate', 'horrible', 'poor', 'worst', 'sad', 'angry', 'disappointed']
+        
+        text_lower = text.lower()
+        positive_count = sum(1 for word in positive_words if word in text_lower)
+        negative_count = sum(1 for word in negative_words if word in text_lower)
+        
+        if positive_count > negative_count:
+            return 1  # Positive
+        elif negative_count > positive_count:
+            return 0  # Negative
+        else:
+            return 0.5  # Neutral
     
     def extract_content_features(self, texts):
         """Extract rich content features"""
@@ -57,9 +74,8 @@ class TwitterContentOptimizer:
             mention_count = text.count('@')
             url_count = sum(1 for token in doc if token.like_url)
             
-            # Sentiment
-            sentiment = self.sentiment_analyzer(text)[0]
-            sentiment_score = 1 if sentiment['label'] == 'POSITIVE' else 0
+            # Simple sentiment instead of transformer-based
+            sentiment_score = self.simple_sentiment_analysis(text)
             
             features.append({
                 'word_count': word_count,
@@ -78,30 +94,47 @@ class TwitterContentOptimizer:
         """Train the engagement prediction model"""
         try:
             # Get historical data
-            df = pd.DataFrame(self.content_calendar.get_past_posts())
+            past_posts = self.content_calendar.get_past_posts()
+            if not past_posts:
+                logging.warning("No past posts available for training")
+                return False
+                
+            df = pd.DataFrame(past_posts)
+            
+            # Filter for Twitter posts only
+            df = df[df['platform'] == 'Twitter']
             
             if len(df) < 10:
-                logging.warning("Insufficient training data")
+                logging.warning("Insufficient Twitter training data")
                 return False
                 
             # Extract features
             df = self.extract_time_features(df)
-            content_features = self.extract_content_features(df['content'])
+            content_features = self.extract_content_features(df['content'].tolist())
             
             # Combine all features
+            feature_cols = ['hour', 'day_of_week', 'is_weekend', 
+                           'is_morning', 'is_afternoon', 'is_evening']
+            
+            # Check if all required columns exist
+            for col in feature_cols:
+                if col not in df.columns:
+                    logging.error(f"Missing column: {col}")
+                    return False
+            
             X = pd.concat([
-                df[['hour', 'day_of_week', 'is_weekend', 
-                    'is_morning', 'is_afternoon', 'is_evening']],
-                content_features
+                df[feature_cols].reset_index(drop=True),
+                content_features.reset_index(drop=True)
             ], axis=1)
             
-            y = df['engagement_score']
+            # Fill NaN values in engagement_score with 0
+            y = df['engagement_score'].fillna(0)
             
             # Scale features
             X_scaled = self.scaler.fit_transform(X)
             
             # Train model with time series split
-            tscv = TimeSeriesSplit(n_splits=5)
+            tscv = TimeSeriesSplit(n_splits=min(5, len(X) // 2))
             best_score = float('-inf')
             
             for train_idx, val_idx in tscv.split(X_scaled):
@@ -122,65 +155,48 @@ class TwitterContentOptimizer:
     
     def generate_optimized_content(self, topic, target_engagement=None):
         """Generate content optimized for engagement"""
-        prompt = f"""Write a Twitter post about {topic} that will maximize engagement.
-The post should:
-- Use relevant hashtags
-- Be clear and concise
-- Include a call to action
-- Be engaging and conversation-starting
-- Stay within Twitter's 280 character limit
-- Use emojis appropriately"""
+        # Simple template-based generation without OpenAI
+        templates = [
+            f"🚀 Exciting news about {topic}! What are your thoughts? #DigitalStrategy #Innovation",
+            f"💡 Did you know? {topic} is changing the game! Share your experience below 👇 #TechTrends",
+            f"🎯 {topic}: The future is here! How are you preparing? Let's discuss! #FutureOfWork",
+            f"📈 Breaking down {topic} - what you need to know today! Thread 🧵 #Learning #Growth",
+            f"🔥 Hot take: {topic} will transform our industry. Agree or disagree? #Disruption"
+        ]
         
+        # Select a random template
+        import random
+        content = random.choice(templates)
+        
+        # Ensure it's within Twitter limit
+        if len(content) > 280:
+            content = content[:277] + "..."
+        
+        # Predict engagement score for this content
         try:
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": "You are a social media expert who writes engaging Twitter posts that drive high engagement."},
-                    {"role": "user", "content": prompt}
-                ],
-                n=3,
-                temperature=0.7,
-                max_tokens=100
-            )
+            time_features = self.extract_time_features(pd.DataFrame({
+                'time_slot': [datetime.now().strftime('%H:%M')],
+                'due_date': [datetime.now().date()]
+            }))
             
-            # Get all generated candidates
-            candidates = [choice.message['content'].strip() for choice in response.choices]
+            content_features = self.extract_content_features([content])
             
-            # Predict engagement for each candidate
-            best_content = None
-            best_score = float('-inf')
+            feature_cols = ['hour', 'day_of_week', 'is_weekend', 
+                           'is_morning', 'is_afternoon', 'is_evening']
             
-            for content in candidates:
-                # Skip if content exceeds Twitter's limit
-                if len(content) > 280:
-                    continue
-                    
-                # Extract features for prediction
-                time_features = self.extract_time_features(pd.DataFrame({
-                    'time_slot': [datetime.now().strftime('%H:%M')],
-                    'due_date': [datetime.now().date()]
-                }))
-                
-                content_features = self.extract_content_features([content])
-                
-                features = pd.concat([
-                    time_features.iloc[[0]].reset_index(drop=True),
-                    content_features
-                ], axis=1)
-                
-                # Scale and predict
-                features_scaled = self.scaler.transform(features)
-                predicted_engagement = self.model.predict(features_scaled)[0]
-                
-                if predicted_engagement > best_score:
-                    best_score = predicted_engagement
-                    best_content = content
+            features = pd.concat([
+                time_features[feature_cols].reset_index(drop=True),
+                content_features.reset_index(drop=True)
+            ], axis=1)
             
-            return best_content, best_score
+            # Scale and predict
+            features_scaled = self.scaler.transform(features)
+            predicted_engagement = self.model.predict(features_scaled)[0]
             
-        except Exception as e:
-            logging.error(f"Error generating content: {str(e)}")
-            return None, None
+            return content, predicted_engagement
+        except:
+            # If prediction fails, return content with default score
+            return content, 50.0
     
     def schedule_optimized_content(self, topic, time_slots):
         """Generate and schedule optimized content"""
@@ -188,21 +204,12 @@ The post should:
         
         if content:
             try:
-                # Find best time slot based on historical patterns
-                best_slot = max(time_slots, key=lambda slot: 
-                    self.model.predict(self.scaler.transform([[
-                        pd.to_datetime(slot).hour,
-                        pd.to_datetime(slot).dayofweek,
-                        1 if pd.to_datetime(slot).dayofweek in [5, 6] else 0,
-                        1 if pd.to_datetime(slot).hour in range(6, 12) else 0,
-                        1 if pd.to_datetime(slot).hour in range(12, 17) else 0,
-                        1 if pd.to_datetime(slot).hour in range(17, 22) else 0
-                    ]]))[0]
-                )
+                # Use the first available time slot
+                best_slot = time_slots[0] if time_slots else datetime.now()
                 
                 # Schedule the post
                 post_data = {
-                    'due_date': pd.to_datetime(best_slot).date(),
+                    'due_date': pd.to_datetime(best_slot).date().strftime('%Y-%m-%d'),
                     'time_slot': pd.to_datetime(best_slot).strftime('%H:%M'),
                     'platform': 'Twitter',
                     'content_type': 'post',
